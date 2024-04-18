@@ -65,7 +65,6 @@ in {
       zathura-custom.enable = true ;
       emacs-custom.enable = true ;
       git-custom.enable = true;
-      # waybar-custom = true;
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
 
