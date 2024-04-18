@@ -57,12 +57,14 @@ in {
         ./user-custom/zathura-custom.nix
         ./user-custom/emacs-custom.nix
         ./user-custom/waybar-custom.nix
+        ./user-custom/git-custom.nix
           #      ./sshuttle.service.nix
       ];
       bash-custom.enable = true  ;
       hyprland-custom-module.enable  = true ;
       zathura-custom.enable = true ;
       emacs-custom.enable = true ;
+      git-custom.enable = true;
       # waybar-custom = true;
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
