@@ -12,7 +12,7 @@ in {
   config  = lib.mkIf cfg.enable  {
     users.users.${cfg.userName } = {
       isNormalUser = true;
-      home = "/home/platoali";
+     # home = "/home/platoali";
       extraGroups = [ "wheel" "plocate"  ];
       shell = pkgs.bash;
       packages = with pkgs; [
