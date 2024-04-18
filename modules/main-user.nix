@@ -18,7 +18,7 @@ in {
       packages = with pkgs; [
         firefox 
         blesh 
-
+        helvum
         blender
         gimp
         feh
