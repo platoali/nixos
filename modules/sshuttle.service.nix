@@ -1,11 +1,6 @@
-{pkgs , libs,  ... } :
+{pkgs , libs, config , lib,  ... } :
 let
-   host = "sahar:14000";
-  netrange = "0/0";
-#  pid_file = "/tmp/sshuttle.pid" ;
-  user = "platoali" ;
-  sshuttle_bin = "${pkgs.sshuttle}/bin/sshuttle";
-  sshuttleServiceScript  = pkgs.writeScript     "sshuttle"     ''
+  sshuttleServiceScriptDefault   = pkgs.writeScript     "sshuttle"     ''
 #!/usr/bin/env -S  python
 ## REQUIRES MINIMUM PY VERSION 2.7
 from __future__ import print_function
@@ -29,10 +24,10 @@ handler.setFormatter(formatter)
 log.addHandler(handler)
 
 #conf = "/home/platoali/.config/sshuttle/config.json"
-ssh_user = "${user}"  ## username thats used for SSH connection
+ssh_user = "${cfg.user}"  ## username thats used for SSH connection
 #pid_file =  "$ { pid_file}"
-rhost = "${host}"
-netrange = "${netrange}"
+rhost = "${cfg.host}"
+netrange = "${cfg.netrange}"
 def precheck():
     if len(sys.argv) < 2:
         print("need to pass argument: start | stop | restart | status | toggle")
@@ -98,7 +93,7 @@ def start():
     time.sleep(3)
 
 def get_pid():
-    search = "ps -ef | grep '${host}' | grep -v grep | awk {'print $2'}"    
+    search = "ps -ef | grep '${cfg.host}' | grep -v grep | awk {'print $2'}"
     pids = []
     for line in os.popen(search):
         fields = line.split()
@@ -149,33 +144,51 @@ if __name__ == "__main__":
     if cmd == "toggle":
         print("toggling sshuttle..")
         toggle()
-
-'' ;      
+'' ;
+  cfg = config.sshuttle-service ;
 in
 {
-  security.sudo = {
-    enable = true;
-    extraConfig = ''
+  options.sshuttle-service  = {
+    enable  = lib.mkEnableOption "enable sshuttle service " ;
+    host = lib.mkOption {
+      default  = "sahar:14000";
+      description = "remote host to connect";
+    };
+    netrange = lib.mkOption  {
+      default = "0/0";
+      description = "network range that should go through tunnel";
+    };
+    user = lib.mkOption {
+      default = "platoali" ;
+      description = "username under whcih sshuttle should run. ";
+    };
+    sshuttleServiceScript = lib.mkOption  {
+      default = sshuttleServiceScriptDefault ;
+      description = "script that start and restart the service " ;
+    };
+  };
+  config = lib.mkIf cfg.enable  {
+    security.sudo = {
+      enable = true;
+      extraConfig = ''
 Cmnd_Alias SSHUTTLEBDF = /usr/bin/env PYTHONPATH=${pkgs.sshuttle}/lib/python3.11/site-packages ${pkgs.sshuttle}/bin/.sshuttle-wrapped  --method auto --firewall
 
 %wheel ALL=NOPASSWD: SSHUTTLEBFD
 platoali  ALL=NOPASSWD: SSHUTTLEBDF
 '';
   };
-   systemd.user.services.sshuttle  = {
+    systemd.user.services.sshuttle  = {
      enable = true  ;
      description                 = "sshuttle service vpn";
      after= ["network.target"];
      wantedBy = ["multi-user.target"];
      path = [ "/run/wrappers"     pkgs.python3   pkgs.sshuttle  pkgs.procps pkgs.gawk];
-     # path = ["${pkgs.sudo}" "${pkgs.python3}"];
+
      serviceConfig = {
-    #   Restart = "on";
-       ExecStart ="${sshuttleServiceScript}  start";
-       ExecStop =" ${sshuttleServiceScript}  stop";
-#       PIDFile="${pid_file}";
+       ExecStart ="${cfg.sshuttleServiceScript}  start";
+       ExecStop =" ${cfg.sshuttleServiceScript}  stop";
        Type = "forking";
-      
      };
    };
+  };
 }

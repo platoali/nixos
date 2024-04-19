@@ -6,7 +6,6 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default 
       ./modules/main-user.nix
- 
       ./modules/sshuttle.service.nix
       ./modules/rgb.service.nix
     ];
@@ -45,10 +44,15 @@
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
   services.ratbagd.enable = true;
-  
+
    main-user.enable = true;
    main-user.userName = "platoali" ;
- 
+
+   sshuttle-service.enable = true;
+   sshuttle-service.host = "sahar:14000";
+   sshuttle-service.netrange = "0/0";
+   sshuttle-service.user = "platoali" ;
+  
     # started in user sessions.
    programs.mtr.enable = true;
   # programs.gnupg.agent = {
