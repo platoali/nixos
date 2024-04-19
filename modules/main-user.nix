@@ -15,7 +15,29 @@ in {
      # home = "/home/platoali";
       extraGroups = [ "wheel" "plocate"  ];
       shell = pkgs.bash;
-      packages = with pkgs; [
+    };
+    home-manager.users.${cfg.userName} = {pkgs, ... }: {
+   
+      imports = [
+        #        ./bash.nix
+        ./user-custom/bash-custom.nix
+        ./user-custom/hyprland-custom.nix
+        ./user-custom/zathura-custom.nix
+        ./user-custom/emacs-custom.nix
+        ./user-custom/waybar-custom.nix
+        ./user-custom/git-custom.nix
+          #      ./sshuttle.service.nix
+      ];
+      bash-custom.enable = true  ;
+      hyprland-custom-module.enable  = true ;
+      zathura-custom.enable = true ;
+      emacs-custom.enable = true ;
+      git-custom.enable = true;
+      waybar-custom.enable  = true;
+      programs.home-manager.enable = true;
+
+      home.stateVersion = "24.05";
+      home.packages = with pkgs; [
         firefox 
         blesh 
         helvum
@@ -47,28 +69,6 @@ in {
         mako
         libnotify
       ];
-    };
-    home-manager.users.${cfg.userName} = {pkgs, ... }: {
-   
-      imports = [
-        #        ./bash.nix
-        ./user-custom/bash-custom.nix
-        ./user-custom/hyprland-custom.nix
-        ./user-custom/zathura-custom.nix
-        ./user-custom/emacs-custom.nix
-        ./user-custom/waybar-custom.nix
-        ./user-custom/git-custom.nix
-          #      ./sshuttle.service.nix
-      ];
-      bash-custom.enable = true  ;
-      hyprland-custom-module.enable  = true ;
-      zathura-custom.enable = true ;
-      emacs-custom.enable = true ;
-      git-custom.enable = true;
-      waybar-custom.enable  = true;
-      programs.home-manager.enable = true;
-
-      home.stateVersion = "24.05";
     };
   };
 }
