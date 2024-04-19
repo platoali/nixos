@@ -13,7 +13,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+ networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below nnietworking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -25,21 +25,16 @@
 136.243.240.66 sahar
 '';
   
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   environment.systemPackages = with pkgs; [
-
     vim
     tmux
-
-   ]; 
-
+  ];
   
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
@@ -144,8 +139,7 @@
       # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
       XDG_RUNTIME_DIR = "/run/user/1000";
     };
-
-  
+    
   fonts.packages = with pkgs; [
     roboto 
     noto-fonts
@@ -164,7 +158,6 @@
     font-awesome_5
   ];
 
-  
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
