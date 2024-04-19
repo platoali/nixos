@@ -1,6 +1,7 @@
-{lib , pkgs , config  ,  ... } :
+{lib , pkgs , config   ,  ... } :
 let
   cfg = config.waybar-custom;
+ 
   sshuttle-toggle = pkgs.writeScript  "sshuttle-toggle " ''
 
 #!/usr/bin/env -S bash 
@@ -127,7 +128,8 @@ in  {
 
           "custom/jalali" = {
             "format" = "{}";
-            "exec" = "$HOME/bin/jalalicli today";
+            #            "exec" = "$HOME/bin/jalalicli today";
+            "exec" = "${./auxFiles/jalalicli}  today";
             "interval"  = 3600;
           };
 
