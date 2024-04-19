@@ -1,18 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, inputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
-      ./modules/main-user.nix
       inputs.home-manager.nixosModules.default 
+      ./modules/main-user.nix
+ 
       ./modules/sshuttle.service.nix
       ./modules/rgb.service.nix
-#      ./modules/bash-custom.nix
     ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -26,26 +22,14 @@
   # Set your time zone.
   time.timeZone = "Asia/Tehran";
 
-  # services.ntp = {
-  #   enable = true;
-  #   servers = [ "time-a-g.nist.gov" "time.windows.com" "time.google.com"];
-  # };
   networking.extraHosts = ''
 136.243.240.66 sahar
 '';
   
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
+  
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   environment.systemPackages = with pkgs; [
@@ -57,66 +41,16 @@
 
   
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
   services.ratbagd.enable = true;
   
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-   # users.users.platoali = {
-   #   isNormalUser = true;
-   #   home = "/home/platoali";
-   #   extraGroups = [ "wheel" "plocate"  ]; # Enable ‘sudo’ for the user.
-   #   packages = with pkgs; [
-   #     firefox 
-   #     blesh 
-   #     font-awesome 
-   #     blender
-   #     gimp
-   #     feh
-   #     zathura
-   #     scrot
-   #     cabal-install
-   #     stack
-   #     haskellPackages.haskell-language-server
-   #     alacritty
-   #     swaylock
-   #     swaybg
-   #     qutebrowser
-   #     waybar
-   #     wlogout
-   #     wofi
-   #     sshuttle
-   #     git
-   #     mpc-cli
-   #     obs-studio
-   #     krita 
-   #     #emacs
-   #     nomacs 
-   #     wpaperd
-   #     mpvpaper
-   #     grim
-       
-   #   ];
-   # };
-
    main-user.enable = true;
    main-user.userName = "platoali" ;
  
-  # SOME programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
+    # started in user sessions.
+   programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
@@ -146,11 +80,8 @@
       install = true ;
     };
 
-#   services.emacs.enable = true;
-    services.dictd.enable = true;
-#    services.emacs.package = import /home/platoali/.emacs.d { pkgs = pkgs; };
 
-    
+    services.dictd.enable = true;
 #    networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
 
    services.resolved = {
@@ -187,8 +118,6 @@
       musicDirectory = "/home/platoali/Music";
       playlistDirectory = "/home/platoali/Music/playListDirectoy" ;
       dbFile = "/home/platoali/playListDirectoy/dbFile";
-     #  stateFile = "/home/platoali/playListDirectoy/stateFile" ;
-     # stickerFile = "/home/platoali/playListDirectoy/stickerFile";
       extraConfig = ''
         audio_output {
          type "pipewire"
@@ -199,7 +128,6 @@
 
        state_file          "/home/platoali/Music/mpd/state"
        sticker_file        "/home/platoali/Music/mpd/sticker.sql"
-      
        '';
       startWhenNeeded = true ;
       
