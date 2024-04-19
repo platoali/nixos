@@ -174,7 +174,7 @@ in
 Cmnd_Alias SSHUTTLEBDF = /usr/bin/env PYTHONPATH=${pkgs.sshuttle}/lib/python3.11/site-packages ${pkgs.sshuttle}/bin/.sshuttle-wrapped  --method auto --firewall
 
 %wheel ALL=NOPASSWD: SSHUTTLEBFD
-platoali  ALL=NOPASSWD: SSHUTTLEBDF
+${cfg.userj}  ALL=NOPASSWD: SSHUTTLEBDF
 '';
   };
     systemd.user.services.sshuttle  = {
