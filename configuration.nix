@@ -52,6 +52,9 @@
    sshuttle-service.host = "sahar:14000";
    sshuttle-service.netrange = "0/0";
    sshuttle-service.user = "platoali" ;
+
+   open-rgb-service.enable = true;
+   open-rgb-service.color = "000000";
   
     # started in user sessions.
    programs.mtr.enable = true;
