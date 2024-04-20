@@ -8,6 +8,7 @@
       ./modules/main-user.nix
       ./modules/sshuttle.service.nix
       ./modules/rgb.service.nix
+      ./modules/virt-manager.nix
     ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -50,7 +51,8 @@
 
    open-rgb-service.enable = true;
    open-rgb-service.color = "000000";
-  
+
+   virt-manager-custom.enable = true;
     # started in user sessions.
    programs.mtr.enable = true;
   # programs.gnupg.agent = {
