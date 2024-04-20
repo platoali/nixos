@@ -13,7 +13,7 @@ in {
     users.users.${cfg.userName } = {
       isNormalUser = true;
      # home = "/home/platoali";
-      extraGroups = [ "wheel" "plocate"  ];
+      extraGroups = [ "wheel" "plocate"  "libvirtd" ];
       shell = pkgs.bash;
     };
     home-manager.users.${cfg.userName} = {pkgs, ... }: {

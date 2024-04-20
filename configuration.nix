@@ -34,6 +34,7 @@
   environment.systemPackages = with pkgs; [
     vim
     tmux
+    wget
   ];
   
   # Enable CUPS to print documents.
