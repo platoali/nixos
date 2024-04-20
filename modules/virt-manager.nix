@@ -4,13 +4,11 @@ let
 in
 {
   options.virt-manager-custom =  {
-    enable = lib.mkEnableOption " enable virtualazation custom" ;
-   
+    enable = lib.mkEnableOption " enable virtualasation custom" ;
   };
-  config = lib.mkIf cfg.virt-manager-custom.enable {
+  config = lib.mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;
     programs.virt-manager.enable = true;
-
   };
 }
   
