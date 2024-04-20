@@ -51,6 +51,7 @@ in {
         haskellPackages.haskell-language-server
         alacritty
         swaylock
+        swayidle 
         swaybg
         qutebrowser
         waybar
