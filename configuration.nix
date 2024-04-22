@@ -38,6 +38,9 @@
     htop
     mtr
     iotop
+    git
+    wget
+    curl 
   ];
   
   # Enable CUPS to print documents.
