@@ -35,6 +35,9 @@
     vim
     tmux
     wget
+    htop
+    mtr
+    iotop
   ];
   
   # Enable CUPS to print documents.
