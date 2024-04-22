@@ -19,14 +19,12 @@ in {
     home-manager.users.${cfg.userName} = {pkgs, ... }: {
    
       imports = [
-        #        ./bash.nix
         ./user-custom/bash-custom.nix
         ./user-custom/hyprland-custom.nix
         ./user-custom/zathura-custom.nix
         ./user-custom/emacs-custom.nix
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
-          #      ./sshuttle.service.nix
       ];
       bash-custom.enable = true  ;
       hyprland-custom-module.enable  = true ;
@@ -49,6 +47,7 @@ in {
         cabal-install
         stack
         haskellPackages.haskell-language-server
+        ghc
         alacritty
         swaylock
         swayidle 

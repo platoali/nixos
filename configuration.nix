@@ -10,6 +10,7 @@
       ./modules/rgb.service.nix
       ./modules/virt-manager.nix
     ];
+  
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -39,8 +40,8 @@
     mtr
     iotop
     git
-    wget
-    curl 
+   #  wget
+  #  curl 
   ];
   
   # Enable CUPS to print documents.
