@@ -1,6 +1,6 @@
 {pkgs , libs, config , lib,  ... } :
 let
-  sshuttleServiceScriptDefault   = pkgs.writeScript     "sshuttle"     ''
+  sshuttleServiceScriptDefault   = pkgs.writeScript     "sshuttleSeviceScript"     ''
 #!/usr/bin/env -S  python
 ## REQUIRES MINIMUM PY VERSION 2.7
 from __future__ import print_function
