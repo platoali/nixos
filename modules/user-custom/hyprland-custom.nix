@@ -65,123 +65,100 @@ in  {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
         workspace_swipe = "off";
       };
-
-    };
-    wayland.windowManager.hyprland.extraConfig = ''
-
-animations {
-enabled = yes
+      animations  = {
+        enabled = "yes";
 
 # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
-bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
 
-animation = windows, 1, 7, myBezier
-animation = windowsOut, 1, 7, default, popin 80%
-animation = border, 1, 10, default
-animation = borderangle, 1, 8, default
-animation = fade, 1, 7, default
-animation = workspaces, 1, 6, default
-}
-
-misc {
-# See https://wiki.hyprland.org/Configuring/Variables/ for more
-force_default_wallpaper = 0 # Set to 0 to disable the anime mascot wallpapers
-disable_hyprland_logo = false
-disable_splash_rendering = false 
-}
-
-
+        animation = [
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+          " workspaces, 1, 6, default"];
+      };
+      misc  = {
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        force_default_wallpaper = 0; # Set to 0 to disable the anime mascot wallpapers
+        disable_hyprland_logo = false;
+        disable_splash_rendering = false ;
+      };
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-$mainMod = SUPER
+      "$mainMod" = "SUPER";
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, Q, exec, wlogout
-bind = $mainMod, C, killactive, 
-bind = $mainMod, M, exit, 
+      bind = [
+        "$mainMod, Q, exec, wlogout"
+        "$mainMod, C, killactive, "
+        " $mainMod, M, exit, "
+        "$mainMod, E, exec, emacsclient -c "
+        "$mainMod SHIFT, E, exec, ec"
+        "$mainMod, B, exec , qutebrowser"
+        "$mainMod, P , exec , mpc toggle "
+        "$mainMod SHIFT, F, togglefloating,"
+        "$mainMod, F, fullscreen"
+        "$mainMod, R, exec, wofi --show run"
+        "$mainMod, S, exec, ~/bin/sshuttle.service.toggle.sh"
+        "$mainMod, return, exec ,alacritty -o font.size=12"
+        "$mainMod, left, movefocus, l"
+        "$mainMod, right, movefocus, r"
+        "$mainMod, up, movefocus, u"
+        "$mainMod, down, movefocus, d"
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
+        "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
+        "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
+        "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
+        "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
+        "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
+        "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
+        "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
+        "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
+        "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
+        "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
+        "$mainMod, j ,layoutmsg, cyclenext"
+        "$mainMod SHIFT , j ,layoutmsg, swapnext "
+        "$mainMod , Tab, layoutmsg , cyclenext"
+        "Alt , Tab , cyclenext"
+        "$mainMod, l ,layoutmsg, cycleprev"
+        "$mainMod SHIFT , l ,layoutmsg, swapprev"
+        "$mainMod, k,layoutmsg, orientationcycle top left"
+        "$mainMod SHIFT , right , resizeactive, 10 0 "
+        "$mainMod SHIFT , left, resizeactive , -10 0"
+        "$mainMod SHIFT , up , resizeactive, 0 -10  "
+        "$mainMod SHIFT , down , resizeactive ,0 10 "
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+      ];
 
-bind = $mainMod, E, exec, emacsclient -c 
-bind = $mainMod SHIFT, E, exec, ec
-bind = $mainMod, B, exec , qutebrowser
-bind = $mainMod, P , exec , mpc toggle 
-bind = $mainMod SHIFT, F, togglefloating,
-bind = $mainMod, F, fullscreen
-bind = $mainMod, R, exec, wofi --show run
-bind = $mainMod, S, exec, ~/bin/sshuttle.service.toggle.sh
-#bind = $mainMod, P, pseudo, # dwindle
-#bind = $mainMod, J, togglesplit, # dwindle
-bind = $mainMod, return, exec ,alacritty -o font.size=12
-# Move focus with mainMod + arrow keys
-bind = $mainMod, left, movefocus, l
-bind = $mainMod, right, movefocus, r
-bind = $mainMod, up, movefocus, u
-bind = $mainMod, down, movefocus, d
+      bindm = [
+        " $mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+      ];
 
-
-# Switch workspaces with mainMod + [0-9]
-bind = $mainMod, 1, workspace, 1
-bind = $mainMod, 2, workspace, 2
-bind = $mainMod, 3, workspace, 3
-bind = $mainMod, 4, workspace, 4
-bind = $mainMod, 5, workspace, 5
-bind = $mainMod, 6, workspace, 6
-bind = $mainMod, 7, workspace, 7
-bind = $mainMod, 8, workspace, 8
-bind = $mainMod, 9, workspace, 9
-bind = $mainMod, 0, workspace, 10
-
-
-
-# Move active window to a workspace with mainMod + SHIFT + [0-9]
-bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
-bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
-bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
-bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
-bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
-bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
-bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
-bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
-bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
-bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
-
-
-bind = $mainMod, j ,layoutmsg, cyclenext
-bind = $mainMod SHIFT , j ,layoutmsg, swapnext 
-bind = $mainMod , Tab, layoutmsg , cyclenext
-bind = Alt , Tab , cyclenext
-bind = $mainMod, l ,layoutmsg, cycleprev
-bind = $mainMod SHIFT , l ,layoutmsg, swapprev
-
-bind = $mainMod, k,layoutmsg, orientationcycle top left
-
-bind = $mainMod SHIFT , right , resizeactive, 10 0 
-bind = $mainMod SHIFT , left, resizeactive , -10 0
-
-bind = $mainMod SHIFT , up , resizeactive, 0 -10  
-bind = $mainMod SHIFT , down , resizeactive ,0 10 
-
-
-#bind = $mainMod, k, orientationleft
-#bind = $mainMod, l, orientationtop
-# Scroll through existing workspaces with mainMod + scroll
-bind = $mainMod, mouse_down, workspace, e+1
-bind = $mainMod, mouse_up, workspace, e-1
-
-
-# Move/resize windows with mainMod + LMB/RMB and dragging
-bindm = $mainMod, mouse:272, movewindow
-bindm = $mainMod, mouse:273, resizewindow
-
-exec-once=waybar
-exec-once=mako 
-exec-once = swaybg -m fill -i /home/platoali/Photos/IMG_20190501_170029.jpg
-#exec-once = hyprpaper 
-exec-once = wl-paste --type text --watch cliphist store #Stores only text data
-exec-once = wl-paste --type image --watch cliphist store #Stores only image data
-exec-once=swayidle -w timeout 600 'swaylock -f ' timeout 605 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'
-exec-once=qutebrowser --nowindow
-exec-once=hyprland-per-window-layout 
-bind = $mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
-'';
+      exec-once=[
+        "waybar"
+        "mako"
+        "swaybg -m fill -i /home/platoali/Photos/IMG_20190501_170029.jpg"
+        #exec-once = hyprpaper 0
+        "wl-paste --type text --watch cliphist store #Stores only text data"
+        "wl-paste --type image --watch cliphist store #Stores only image data"
+        "swayidle -w timeout 600 'swaylock -f ' timeout 605 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'"
+        "qutebrowser --nowindow"
+        "hyprland-per-window-layout "
+        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"];
+    };
   };
 }
