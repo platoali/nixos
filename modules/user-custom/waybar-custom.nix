@@ -128,7 +128,6 @@ in  {
 
           "custom/jalali" = {
             "format" = "{}";
-
             "exec" = "${../../auxFiles/jalalicli}  today";
             "interval"  = 3600;
           };

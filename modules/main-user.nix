@@ -68,6 +68,7 @@ in {
         grim
         mako
         libnotify
+        exercism
       ];
     };
   };
