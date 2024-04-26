@@ -69,6 +69,7 @@ in {
         mako
         libnotify
         exercism
+        bats
       ];
     };
   };
