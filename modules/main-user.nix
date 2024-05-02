@@ -70,6 +70,8 @@ in {
         libnotify
         exercism
         bats
+        wl-clipboard
+        cliphist
       ];
     };
   };

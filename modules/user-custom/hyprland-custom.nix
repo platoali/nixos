@@ -153,12 +153,11 @@ in  {
         "mako"
         "swaybg -m fill -i /home/platoali/Photos/IMG_20190501_170029.jpg"
         #exec-once = hyprpaper 0
-        "wl-paste --type text --watch cliphist store #Stores only text data"
-        "wl-paste --type image --watch cliphist store #Stores only image data"
+        "wl-paste --type text --watch cliphist store "
+        "wl-paste --type image --watch cliphist store "
         "swayidle -w timeout 600 'swaylock -f ' timeout 605 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'"
         "qutebrowser --nowindow"
-        "hyprland-per-window-layout "
-        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"];
+        "hyprland-per-window-layout "];
     };
   };
 }
