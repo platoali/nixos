@@ -39,8 +39,12 @@
       options = [ "subvol=swap"  "noatime" ];
     };
   
-
-
+  fileSystems."/tmp" =
+    {
+      device = "tmpfs" ;
+      fsType="tmpfs";
+      options = ["rw"  "nodev"  "nosuid" "nodev"  "nosuid" ];
+    };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/E8B1-A999";
