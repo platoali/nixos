@@ -9,6 +9,7 @@
       ./modules/sshuttle.service.nix
       ./modules/rgb.service.nix
       ./modules/virt-manager.nix
+      ./modules/mpd_custom_service.nix
     ];
   
   # Use the systemd-boot EFI boot loader.
@@ -60,6 +61,8 @@
    open-rgb-service.enable = true;
    open-rgb-service.color = "000000";
 
+   mpd_custom_service.enable  =  true ;
+
    virt-manager-custom.enable = true;
     # started in user sessions.
    programs.mtr.enable = true;
@@ -85,13 +88,11 @@
     xdg.portal.enable  = true;
     xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
 
-
     services.emacs = { 
       enable = true;
       defaultEditor = true;
       install = true ;
     };
-
 
     services.dictd.enable = true;
 #    networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
@@ -122,32 +123,6 @@
     
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
-    };
-    
-    services.mpd = {
-      enable = true;
-      user = "platoali" ;
-      musicDirectory = "/home/platoali/Music";
-      playlistDirectory = "/home/platoali/Music/playListDirectoy" ;
-      dbFile = "/home/platoali/playListDirectoy/dbFile";
-      extraConfig = ''
-        audio_output {
-         type "pipewire"
-         name "Pipewire server"
-         enabled "yes"
-        }
-       db_file             "/home/platoali/Music/mpd/tag_cache"  
-
-       state_file          "/home/platoali/Music/mpd/state"
-       sticker_file        "/home/platoali/Music/mpd/sticker.sql"
-       '';
-      startWhenNeeded = true ;
-      
-    };
-        
-    systemd.services.mpd.environment = {
-      # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
-      XDG_RUNTIME_DIR = "/run/user/1000";
     };
     
   fonts.packages = with pkgs; [
