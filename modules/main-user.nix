@@ -72,6 +72,7 @@ in {
         bats
         wl-clipboard
         cliphist
+        bc
       ];
     };
   };
