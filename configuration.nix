@@ -57,6 +57,7 @@
    sshuttle-service.host = "sahar:4000";
    sshuttle-service.netrange = "0/0";
    sshuttle-service.user = "platoali" ;
+   sshuttle-service.sshuttleConnectionOptions = " --dns" ;
 
    open-rgb-service.enable = true;
    open-rgb-service.color = "000000";

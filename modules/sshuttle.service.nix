@@ -28,6 +28,7 @@ ssh_user = "${cfg.user}"  ## username thats used for SSH connection
 #pid_file =  "$ { pid_file}"
 rhost = "${cfg.host}"
 netrange = "${cfg.netrange}"
+options="${cfg.sshuttleConnectionOptions}" 
 def precheck():
     if len(sys.argv) < 2:
         print("need to pass argument: start | stop | restart | status | toggle")
@@ -81,7 +82,7 @@ def start():
       #       netrange = netrange.strip()
                 
         # build rpath
-    rpath = "-r {0}@{1} {2}     --dns --no-latency-control".format(ssh_user, rhost, netrange)
+    rpath = "-r {0}@{1} {2}    {3} ".format(ssh_user, rhost, netrange,options)
     try:
             print("starting sshuttle..")
             log.info("starting sshuttle for networks: %s via %s" % (netrange, rhost))
@@ -165,6 +166,10 @@ in
     sshuttleServiceScript = lib.mkOption  {
       default = sshuttleServiceScriptDefault ;
       description = "script that start and restart the service " ;
+    };
+    sshuttleConnectionOptions = lib.mkOption {
+      default  = " --dns --no-latency-control";
+      description ="ssh connection options ";
     };
   };
   config = lib.mkIf cfg.enable  {

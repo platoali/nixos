@@ -73,6 +73,8 @@ in {
         wl-clipboard
         cliphist
         bc
+        haskellPackages.hakyll
+        cabal2nix
       ];
     };
   };
