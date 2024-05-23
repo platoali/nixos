@@ -75,7 +75,7 @@ in {
         bc
         haskellPackages.hakyll
         cabal2nix
-        zeroadPackages.zeroad 
+         zeroad
       ];
     };
   };

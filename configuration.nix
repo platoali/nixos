@@ -16,10 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
- networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below nnietworking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+ networking.hostName = "nixos";
 
   # Set your time zone.
   time.timeZone = "Asia/Tehran";
