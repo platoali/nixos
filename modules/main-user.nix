@@ -75,11 +75,12 @@ in {
         bc
         haskellPackages.hakyll
         cabal2nix
-         zeroad
+        zeroad
+        zlib
       ];
     };
   };
-}
+  }
 
   
  
