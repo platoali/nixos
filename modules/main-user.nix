@@ -77,6 +77,7 @@ in {
         cabal2nix
         zeroad
         zlib
+        telegram-desktop
       ];
     };
   };
