@@ -7,7 +7,7 @@ in  {
   } ;
 
   config  = lib.mkIf cfg.enable { 
-      wayland.windowManager.hyprland.enable = true;
+    wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
 
     wayland.windowManager.hyprland.settings = {
@@ -58,7 +58,7 @@ in  {
 
       master = {
         # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-        new_is_master = false ;
+       # new_is_master = false ;
       };
 
       gestures  = {
