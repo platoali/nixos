@@ -44,7 +44,7 @@
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
   services.ratbagd.enable = true;
-
+  services.fwupd.enable = true;
    main-user.enable = true;
    main-user.userName = "platoali" ;
 
@@ -55,7 +55,7 @@
    sshuttle-service.sshuttleConnectionOptions = " --dns" ;
 
    open-rgb-service.enable = true;
-   open-rgb-service.color = "000000";
+   open-rgb-service.color = "010101";
 
    mpd_custom_service.enable  =  true ;
 
@@ -176,6 +176,7 @@
   system.stateVersion = "24.05"; # Did you read the comment?
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   nix.settings.cores = 24;
+
 #  nix.settings.download-speed = 200;
 }
 

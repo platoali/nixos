@@ -3,7 +3,7 @@ let
   cfg = config.emacs-custom;
 in  {
   options.emacs-custom = {
-    enable = lib.mkEnableOption "enbale zathura custom config" ;
+    enable = lib.mkEnableOption "enbale emace server custom config" ;
   } ;
 
   config  = lib.mkIf cfg.enable { 

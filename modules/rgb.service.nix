@@ -12,7 +12,7 @@ in {
   options.open-rgb-service  = {
     enable  =  lib.mkEnableOption " enable openrgb service" ;
     color = lib.mkOption  {
-      default  = "000000" ;
+      default  = "010101" ;
       description = " default color for leds" ;
     };
       rgb-script  = lib.mkOption  {

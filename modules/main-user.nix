@@ -78,6 +78,7 @@ in {
         zeroad
         zlib
         telegram-desktop
+        s-tui
       ];
     };
   };

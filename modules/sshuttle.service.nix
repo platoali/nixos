@@ -176,7 +176,7 @@ in
     security.sudo = {
       enable = true;
       extraConfig = ''
-Cmnd_Alias SSHUTTLEBDF = /usr/bin/env PYTHONPATH=${pkgs.sshuttle}/lib/python3.11/site-packages ${pkgs.sshuttle}/bin/.sshuttle-wrapped  --method auto --firewall
+Cmnd_Alias SSHUTTLEBDF = /usr/bin/env PYTHONPATH=${pkgs.sshuttle}/lib/python3.12/site-packages ${pkgs.sshuttle}/bin/.sshuttle-wrapped  --method auto --firewall
 
 %wheel ALL=NOPASSWD: SSHUTTLEBFD
 ${cfg.user}  ALL=NOPASSWD: SSHUTTLEBDF
