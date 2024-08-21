@@ -1,12 +1,26 @@
 {lib , pkgs , config  ,  ... } :
 let
+  sshuttletoggleScriptHyprlandDefault = pkgs.writeScript "sshuttleToggleScriptHyprland" "
+#!/usr/bin/env -S bash
+if [[ $(systemctl --user status    sshuttle.service | grep 'Active' | awk '{print $2}' ) = 'active'  ]]
+then
+  systemctl --user stop sshuttle.service
+else
+  systemctl --user start sshuttle.service
+fi
+";
+
   cfg = config.hyprland-custom-module ;
 in  {
   options.hyprland-custom-module  = {
     enable = lib.mkEnableOption "enbale hyprland custom config" ;
+    sshuttleToggleScript = lib.mkOption {
+       default = sshuttletoggleScriptHyprlandDefault;
+       description = "stcipt to toggle the sshuttle vpn service" ;
+     };
   } ;
 
-  config  = lib.mkIf cfg.enable { 
+  config  = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
 
@@ -48,8 +62,6 @@ in  {
         shadow_render_power = 3;
         #   col.shadow = "rgba(1a1a1aee)";
       };
-
-
       dwindle  = {
         # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
         pseudotile = "yes" ;# master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
@@ -101,7 +113,7 @@ in  {
         "$mainMod SHIFT, F, togglefloating,"
         "$mainMod, F, fullscreen"
         "$mainMod, R, exec, wofi --show run"
-        "$mainMod, S, exec, ~/bin/sshuttle.service.toggle.sh"
+        "$mainMod, S, exec, ${cfg.sshuttleToggleScript}"
         "$mainMod, return, exec ,alacritty -o font.size=12"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
