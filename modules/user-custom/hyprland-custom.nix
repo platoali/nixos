@@ -1,21 +1,11 @@
 {lib , pkgs , config  ,  ... } :
 let
-  sshuttletoggleScriptHyprlandDefault = pkgs.writeScript "sshuttleToggleScriptHyprland" "
-#!/usr/bin/env -S bash
-if [[ $(systemctl --user status    sshuttle.service | grep 'Active' | awk '{print $2}' ) = 'active'  ]]
-then
-  systemctl --user stop sshuttle.service
-else
-  systemctl --user start sshuttle.service
-fi
-";
-
   cfg = config.hyprland-custom-module ;
 in  {
   options.hyprland-custom-module  = {
     enable = lib.mkEnableOption "enbale hyprland custom config" ;
     sshuttleToggleScript = lib.mkOption {
-       default = sshuttletoggleScriptHyprlandDefault;
+      default = "${../../auxFiles/sshuttleToggle.sh}" ;
        description = "stcipt to toggle the sshuttle vpn service" ;
      };
   } ;

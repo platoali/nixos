@@ -1,21 +1,18 @@
 {lib , pkgs , config   ,  ... } :
 let
   cfg = config.waybar-custom;
- 
-  sshuttle-toggle = pkgs.writeScript  "sshuttle-toggle" ''
 
-#!/usr/bin/env -S bash 
-
-if [[ $(systemctl --user status sshuttle.service | grep Activ | awk ' {print $2}') = "active" ]]
-then
-    systemctl --user stop sshuttle.service
-else
-    systemctl --user start sshuttle.service
-fi
-'' ;
 in  {
   options.waybar-custom = {
     enable = lib.mkEnableOption "enbale waybar  custom config" ;
+    sshuttleToggleScript = lib.mkOption {
+      default = "${../../auxFiles/sshuttleToggle.sh}" ;
+      description = "stcipt to toggle the sshuttle vpn service" ;
+    };
+    jalaliScript = lib.mkOption {
+      default = "${../../auxFiles/jalalicli} today" ;
+      description = "script that return today in jalali";
+    };
   } ;
 
   config  = lib.mkIf cfg.enable { 
@@ -90,7 +87,7 @@ in  {
             "format" = "{}";
             "exec" = " systemctl --user status sshuttle.service | grep Activ | awk '{if ($2 == \"active\") {print \"\"} else {print \"x\"}}'" ;
             "interval"  = 2;
-            "on-click"  =  "${sshuttle-toggle}";
+            "on-click"  =  "${cfg.sshuttleToggleScript}";
           };
           
           "network" =  {
@@ -128,7 +125,7 @@ in  {
 
           "custom/jalali" = {
             "format" = "{}";
-            "exec" = "${../../auxFiles/jalalicli}  today";
+            "exec" = "${cfg.jalaliScript}";
             "interval"  = 3600;
           };
 

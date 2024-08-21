@@ -39,7 +39,6 @@
     iotop
     git
   ];
-  
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
