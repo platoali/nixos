@@ -2,7 +2,7 @@
 let
   cfg = config.waybar-custom;
  
-  sshuttle-toggle = pkgs.writeScript  "sshuttle-toggle " ''
+  sshuttle-toggle = pkgs.writeScript  "sshuttle-toggle" ''
 
 #!/usr/bin/env -S bash 
 
