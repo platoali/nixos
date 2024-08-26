@@ -80,6 +80,8 @@ in {
         zlib
         telegram-desktop
         s-tui
+        stress
+        mpv
       ];
     };
   };
