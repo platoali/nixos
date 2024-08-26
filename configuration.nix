@@ -20,6 +20,7 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Tehran";
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking.extraHosts = ''
 136.243.240.66 sahar

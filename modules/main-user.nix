@@ -39,7 +39,8 @@ in {
         firefox 
         blesh 
         helvum
-        blender
+        blender-hip
+        amdgpu_top
         gimp
         feh
         zathura
