@@ -82,6 +82,7 @@ in {
         s-tui
         stress
         mpv
+        hyprcursor
       ];
     };
   };

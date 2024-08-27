@@ -16,7 +16,10 @@ in  {
 
     wayland.windowManager.hyprland.settings = {
       monitor=",preferred,auto,auto";
-      env = "XCURSOR_SIZE,24";
+  #    env = "XCURSOR_SIZE,24";
+       env = [ "HYPRCURSOR_THEME,Future-Cyan-Hyprcursor_Theme" 
+             "HYPRCURSOR_SIZE,35"];
+
       input = {
         kb_layout = "us,ir";
         #     kb_variant =

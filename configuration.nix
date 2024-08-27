@@ -36,6 +36,7 @@
     tmux
     wget
     htop
+    btop
     mtr
     iotop
     git
