@@ -40,6 +40,7 @@
     mtr
     iotop
     git
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
   # Enable CUPS to print documents.
   services.printing.enable = true;

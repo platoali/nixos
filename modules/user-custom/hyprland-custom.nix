@@ -17,8 +17,10 @@ in  {
     wayland.windowManager.hyprland.settings = {
       monitor=",preferred,auto,auto";
   #    env = "XCURSOR_SIZE,24";
-       env = [ "HYPRCURSOR_THEME,Future-Cyan-Hyprcursor_Theme" 
-             "HYPRCURSOR_SIZE,35"];
+      env = [
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        #"HYPRCURSOR_THEME,Future-Cyan-Hyprcursor_Theme" 
+        "HYPRCURSOR_SIZE,30"];
 
       input = {
         kb_layout = "us,ir";
@@ -98,7 +100,7 @@ in  {
       bind = [
         "$mainMod, Q, exec, wlogout"
         "$mainMod, C, killactive, "
-        " $mainMod, M, exit, "
+#        " $mainMod, M, exit, "
         "$mainMod, E, exec, emacsclient -c "
         "$mainMod SHIFT, E, exec, ec"
         "$mainMod, B, exec , qutebrowser"
