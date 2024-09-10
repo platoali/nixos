@@ -83,6 +83,7 @@ in {
         stress
         mpv
         hyprcursor
+        brave
       ];
     };
   };
