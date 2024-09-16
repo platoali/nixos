@@ -84,6 +84,8 @@ in {
         mpv
         hyprcursor
         brave
+        scummvm
+        p7zip
       ];
     };
   };
