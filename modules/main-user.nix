@@ -33,7 +33,6 @@ in {
       git-custom.enable = true;
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
-
       home.stateVersion = "24.05";
       home.packages = with pkgs; [
         firefox 

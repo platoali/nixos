@@ -73,7 +73,6 @@
              enable=true;
             xwayland.enable=true;
     };
-
     xdg.mime.enable = true;
     xdg.mime.defaultApplications = {
       "application/pdf" = "org.pwmt.zathura.desktop";
@@ -142,7 +141,13 @@
     font-awesome_4
     font-awesome_5
   ];
-
+   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "steam"
+       "steam-original"
+    ];
+    programs.steam  = {
+        enable = true;
+    };
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
