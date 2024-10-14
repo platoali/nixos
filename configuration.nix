@@ -141,13 +141,13 @@
     font-awesome_4
     font-awesome_5
   ];
-   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "steam"
-       "steam-original"
-    ];
-    programs.steam  = {
-        enable = true;
-    };
+   # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+   #    "steam"
+   #     "steam-original"
+   #  ];
+   #  programs.steam  = {
+   #      enable = true;
+   # };
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
