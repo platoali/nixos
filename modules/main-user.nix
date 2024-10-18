@@ -17,7 +17,6 @@ in {
       shell = pkgs.bash;
     };
     home-manager.users.${cfg.userName} = {pkgs, ... }: {
-   
       imports = [
         ./user-custom/bash-custom.nix
         ./user-custom/hyprland-custom.nix
