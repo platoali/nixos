@@ -11,7 +11,6 @@
       ./modules/virt-manager.nix
       ./modules/mpd_custom_service.nix
     ];
-  
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
