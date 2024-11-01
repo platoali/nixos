@@ -68,10 +68,6 @@
   #   enableSSHSupport = true;
   # };
    security.pam.services.swaylock = {};
-    programs.hyprland = { 
-             enable=true;
-            xwayland.enable=true;
-    };
     xdg.mime.enable = true;
     xdg.mime.defaultApplications = {
       "application/pdf" = "org.pwmt.zathura.desktop";
@@ -84,7 +80,7 @@
     
     xdg.portal.enable  = true;
     xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
-
+    xdg.portal.config.common.default = "*";
     services.emacs = { 
       enable = true;
       defaultEditor = true;
@@ -126,7 +122,7 @@
   fonts.packages = with pkgs; [
     roboto 
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code

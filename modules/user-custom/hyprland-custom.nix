@@ -13,7 +13,7 @@ in  {
   config  = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
-
+    wayland.windowManager.hyprland.systemd.variables = ["--all"];
     wayland.windowManager.hyprland.settings = {
       monitor=",preferred,auto,auto";
   #    env = "XCURSOR_SIZE,24";
@@ -156,6 +156,7 @@ in  {
       ];
 
       exec-once=[
+        "dbus-update-activation-environment --systemd --all"
         "waybar"
         "mako"
         "swaybg -m fill -i /home/platoali/Photos/IMG_20190501_170029.jpg"
