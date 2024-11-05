@@ -1,4 +1,4 @@
-{lib  , pkgs, config ,  ... } :
+{lib  , pkgs, config , inputs,   ... } :
 let
   cfg = config.main-user ;
 in {
@@ -25,17 +25,6 @@ in {
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
       ];
-      # nixpkgs.overlays  = [ (final: prev: {
-      #   cliphist = prev.cliphist.overrideAttrs (_old: {
-      #     src = final.fetchFromGitHub {
-      #       owner = "sentriz";
-      #   repo = "cliphist";
-      #   rev = "c49dcd26168f704324d90d23b9381f39c30572bd";
-      #   sha256 = "sha256-2mn55DeF8Yxq5jwQAjAcvZAwAg+pZ4BkEitP6S2N0HY=";
-      #     };
-      #     vendorHash = "sha256-M5n7/QWQ5POWE4hSCMa0+GOVhEDCOILYqkSYIGoy/l0=";
-      #   }
-      #   );})];
       bash-custom.enable = true  ;
       hyprland-custom-module.enable  = true ;
       zathura-custom.enable = true ;
@@ -43,6 +32,28 @@ in {
       git-custom.enable = true;
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
+      xdg.portal.enable  = true;
+    # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
+      xdg.portal.config.common.default = "*";
+      xdg.mimeApps  = {
+        enable = true;
+        associations.added = {
+          "application/pdf" = ["org.pwmt.zathura.desktop"];
+          "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
+        };
+        defaultApplications = {
+          "application/pdf" = ["org.pwmt.zathura.desktop"];
+          "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
+          "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
+        };
+      };
       home.stateVersion = "24.05";
       home.packages = with pkgs; [
         firefox 
@@ -95,6 +106,7 @@ in {
         brave
         scummvm
         p7zip
+        inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       ];
     };
   };

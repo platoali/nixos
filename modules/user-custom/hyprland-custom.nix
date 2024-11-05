@@ -14,6 +14,28 @@ in  {
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
     wayland.windowManager.hyprland.systemd.variables = ["--all"];
+    xdg.portal.enable  = true;
+    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
+    xdg.portal.config.common.default = "*";
+    xdg.mimeApps  = {
+      enable = true;
+      associations.added = {
+        "application/pdf" = ["org.pwmt.zathura.desktop"];
+        "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
+      };
+      defaultApplications = {
+        "application/pdf" = ["org.pwmt.zathura.desktop"];
+        "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
+      };
+    };
     wayland.windowManager.hyprland.settings = {
       monitor=",preferred,auto,auto";
   #    env = "XCURSOR_SIZE,24";

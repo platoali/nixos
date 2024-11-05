@@ -39,7 +39,6 @@
     mtr
     iotop
     git
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -68,19 +67,16 @@
   #   enableSSHSupport = true;
   # };
    security.pam.services.swaylock = {};
-    xdg.mime.enable = true;
-    xdg.mime.defaultApplications = {
-      "application/pdf" = "org.pwmt.zathura.desktop";
-      "text/html" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
-    };
+    # xdg.mime.enable = true;
+    # xdg.mime.defaultApplications = {
+    #   "application/pdf" = "org.pwmt.zathura.desktop";
+    #   "text/html" = "org.qutebrowser.qutebrowser.desktop";
+    #   "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+    #   "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+    #   "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+    #   "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+    # };
     
-    xdg.portal.enable  = true;
-    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
-    xdg.portal.config.common.default = "*";
     services.emacs = { 
       enable = true;
       defaultEditor = true;
@@ -114,7 +110,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-    
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
     };
