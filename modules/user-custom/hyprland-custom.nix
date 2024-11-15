@@ -74,9 +74,12 @@ in  {
           size = 3;
           passes = 1;
         };
-        drop_shadow = "yes";
-        shadow_range = 4;
-        shadow_render_power = 3;
+      #  drop_shadow = "yes";
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+        };
         #   col.shadow = "rgba(1a1a1aee)";
       };
       dwindle  = {
@@ -187,7 +190,9 @@ in  {
         "wl-paste --type image --watch cliphist store "
         "swayidle -w timeout 600 'swaylock -f ' timeout 605 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'"
         "qutebrowser --nowindow"
-        "hyprland-per-window-layout "];
+        "hyprland-per-window-layout"
+        "hyprsunset -t 4500"
+      ];
     };
   };
 }
