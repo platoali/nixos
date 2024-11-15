@@ -107,6 +107,7 @@ in {
         scummvm
         p7zip
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+        inputs.yazi.packages.${pkgs.system}.default
         hyprsunset
       ];
     };

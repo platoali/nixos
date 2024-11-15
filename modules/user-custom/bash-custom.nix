@@ -26,14 +26,8 @@ alias ec='emacsclient -c'
 #xmodmap .xmodmap
 #xmodmap -e "keycode 108 = Alt_R Meta_R Alt_R Meta_R"
 #xmodmap -e "keycode 135 = ISO_Level3_Shift"
-
-
-
 export PATH="$HOME/.local/bin:$HOME/bin/:$PATH"
-
 # alias emacs='emacs -nw'
-
-
 # stack auto complete
 # eval "$(stack --bash-completion-script stack)"
 
@@ -41,9 +35,7 @@ export PATH="$HOME/.local/bin:$HOME/bin/:$PATH"
 #[ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
 [ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
 [ -f "/usr/share/fzf/key-bindings.bash" ] && source "/usr/share/fzf/key-bindings.bash"
-
-
-
+export EDITOR="emacsclient -c" 
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 GIT_PROMPT_ONLY_IN_REPO=1
 source $HOME/.bash-git-prompt/gitprompt.sh
