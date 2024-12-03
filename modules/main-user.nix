@@ -16,6 +16,7 @@ in {
       extraGroups = [ "wheel" "plocate"  "libvirtd" ];
       shell = pkgs.bash;
     };
+    home-manager.backupFileExtension = "backup" ;
     home-manager.users.${cfg.userName} = {pkgs, ... }: {
       imports = [
         ./user-custom/bash-custom.nix
@@ -54,7 +55,8 @@ in {
           "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
         };
       };
-      home.stateVersion = "24.05";
+      
+      home.stateVersion = "24.11";
       home.packages = with pkgs; [
         firefox 
         blesh 
@@ -68,6 +70,7 @@ in {
         cabal-install
         stack
         haskellPackages.haskell-language-server
+        haskellPackages.hasktags 
         ghc
         alacritty
         swaylock
@@ -93,7 +96,7 @@ in {
         bats
         wl-clipboard
         cliphist
-        bc
+        bc 
         haskellPackages.hakyll
         cabal2nix
         zeroad

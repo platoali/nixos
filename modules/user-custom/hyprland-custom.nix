@@ -191,7 +191,7 @@ in  {
         "swayidle -w timeout 600 'swaylock -f ' timeout 605 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'"
         "qutebrowser --nowindow"
         "hyprland-per-window-layout"
-        "hyprsunset -t 4500"
+        "hyprsunset -t 5000"
       ];
     };
   };
