@@ -33,9 +33,9 @@ export PATH="$HOME/.local/bin:$HOME/bin/:$PATH"
 
 #[ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
 #[ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
-[ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
-[ -f "/usr/share/fzf/key-bindings.bash" ] && source "/usr/share/fzf/key-bindings.bash"
-export EDITOR="emacsclient -c" 
+# [ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
+#[ -f "/usr/share/fzf/key-bindings.bash" ] && source "/usr/share/fzf/key-bindings.bash"
+export EDITOR="emacsclient -c"
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 GIT_PROMPT_ONLY_IN_REPO=1
 source $HOME/.bash-git-prompt/gitprompt.sh

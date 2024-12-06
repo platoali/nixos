@@ -174,7 +174,8 @@
   system.stateVersion = "24.05"; # Did you read the comment?
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   nix.settings.cores = 24;
-
-#  nix.settings.download-speed = 200;
+  nix.settings.download-attempts=20;
+  nix.settings.http-connections=5;
+  nix.settings.download-speed=150;
 }
 
