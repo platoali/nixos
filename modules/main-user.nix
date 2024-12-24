@@ -112,6 +112,11 @@ in {
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
         inputs.yazi.packages.${pkgs.system}.default
         hyprsunset
+        nh
+        btop
+        tmux
+        iotop
+        mtr 
       ];
     };
   };

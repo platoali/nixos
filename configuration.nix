@@ -32,15 +32,8 @@
   # services.xserver.enable = true;
   environment.systemPackages = with pkgs; [
     vim
-    tmux
     wget
-    htop
-    btop
-    mtr
-    iotop
-    git
-    nh
-  ];
+     ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
