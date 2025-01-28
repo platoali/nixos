@@ -16,7 +16,10 @@ in {
       extraGroups = [ "wheel" "plocate"  "libvirtd" ];
       shell = pkgs.bash;
     };
+    #services.dictd.enable = true;
+    #services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
     home-manager.backupFileExtension = "backup" ;
+    programs.hyprland.withUWSM  = true;
     home-manager.users.${cfg.userName} = {pkgs, ... }: {
       imports = [
         ./user-custom/bash-custom.nix
@@ -26,6 +29,7 @@ in {
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
       ];
+      
       bash-custom.enable = true  ;
       hyprland-custom-module.enable  = true ;
       zathura-custom.enable = true ;
@@ -61,7 +65,7 @@ in {
         firefox 
         blesh 
         helvum
-        blender-hip
+        #blender-hip
         amdgpu_top
         gimp
         feh
@@ -70,7 +74,11 @@ in {
         cabal-install
         stack
         haskellPackages.haskell-language-server
-        haskellPackages.hasktags 
+        haskellPackages.hasktags
+        haskellPackages.safe
+        haskellPackages.split
+        haskellPackages.zlib
+  #      haskellPackages.containers 
         ghc
         alacritty
         swaylock
@@ -99,7 +107,7 @@ in {
         bc 
         haskellPackages.hakyll
         cabal2nix
-        zeroad
+        #zeroad
         zlib
         telegram-desktop
         s-tui
@@ -110,13 +118,15 @@ in {
         scummvm
         p7zip
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-        inputs.yazi.packages.${pkgs.system}.default
+        #        inputs.yazi.packages.${pkgs.system}.default
+        yazi
         hyprsunset
         nh
         btop
         tmux
         iotop
-        mtr 
+        mtr
+        warzone2100
       ];
     };
   };

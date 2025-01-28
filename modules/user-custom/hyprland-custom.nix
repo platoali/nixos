@@ -11,6 +11,9 @@ in  {
   } ;
 
   config  = lib.mkIf cfg.enable {
+
+   wayland.windowManager.hyprland.systemd.enable = false;
+
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
     wayland.windowManager.hyprland.systemd.variables = ["--all"];

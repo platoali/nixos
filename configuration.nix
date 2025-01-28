@@ -59,7 +59,8 @@
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
-  # };
+   # };
+   
    security.pam.services.swaylock = {};
     # xdg.mime.enable = true;
     # xdg.mime.defaultApplications = {
@@ -77,8 +78,8 @@
       install = true ;
     };
 
-    services.dictd.enable = true;
-    services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
+#    services.dictd.enable = true;
+  #  services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
 #    networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
 
    services.resolved = {
@@ -93,11 +94,23 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland" ;
+          #          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprlanda" ;
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time" ;
         };
       };
     };
 
+
+     programs.uwsm  = {
+       enable = true;
+       waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "${pkgs.hyprland}/bin/Hyprland";
+        };
+       };
+     };
 #    security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
