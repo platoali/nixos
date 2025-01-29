@@ -16,8 +16,8 @@ in {
       extraGroups = [ "wheel" "plocate"  "libvirtd" ];
       shell = pkgs.bash;
     };
-    #services.dictd.enable = true;
-    #services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
+    services.dictd.enable = true;
+    services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
     home-manager.backupFileExtension = "backup" ;
     programs.hyprland.withUWSM  = true;
     home-manager.users.${cfg.userName} = {pkgs, ... }: {
