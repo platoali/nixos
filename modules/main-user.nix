@@ -65,7 +65,7 @@ in {
         firefox 
         blesh 
         helvum
-        #blender-hip
+        blender-hip
         amdgpu_top
         gimp
         feh
