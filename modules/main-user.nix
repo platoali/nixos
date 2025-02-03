@@ -127,6 +127,7 @@ in {
         iotop
         mtr
         warzone2100
+        haskellPackages.parsec_3_1_17_0
       ];
     };
   };

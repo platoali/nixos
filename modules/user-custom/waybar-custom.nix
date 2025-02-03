@@ -23,17 +23,18 @@ in  {
           layer = "top";
           height = 4;
           modules-left = ["hyprland/workspaces"];
-          modules-right =  ["mpd" "custom/keyboard_layout"   "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  "custom/jalali"  "clock"];
+          modules-center = ["clock" "custom/jalali"];
+          modules-right =  ["mpd" "custom/keyboard_layout"   "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  ];
 
           "hyprland/workspaces"  = {
             format = "<sub>{icon}</sub>\n";
             format-window-separator = "\n";
             window-rewrite-default = "";
-            window-rewrite =  {
-              "title<.*youtube.*>" =  ""; 
-                "class<firefox>" = "" ; 
-                "class<firefox> title<.*github.*>" =  "";
-	          };
+            # window-rewrite =  {
+            #   "title<.*youtube.*>" =  ""; 
+            #     "class<firefox>" = "" ; 
+            #     "class<firefox> title<.*github.*>" =  "";
+	          # };
           };
 
           "mpd" =  {
@@ -141,10 +142,12 @@ in  {
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 10px;
-    padding:0;
-    margin : 0;
-    min-height : 0;
+    font-size: 9px;
+    padding:0px 3px;
+    margin : 0px 1px ;
+    min-height : 0px;
+   border-radius : 5px;
+    
 }
 
 window#waybar {
@@ -191,8 +194,15 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
+#workspaces {
+            margin: 0px;
+            padding: 0px;
+}
+
 #workspaces button {
     padding: 0 1px;
+    margin : 0 1px;
+    border-radius : 3px;
     background-color: transparent;
     color: #ffffff;
     
@@ -200,20 +210,19 @@ button:hover {
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
+    padding: 0px;
+    margin: 0px;
 }
 
-/* #workspaces button.focused { */
-/*     background-color: #64727D; */
-/*     box-shadow: inset 0 -3px #ffffff; */
-/* } */
-
-#workspaces button.active {
+workspaces button.focused {
     background-color: #64727D;
     box-shadow: inset 0 -3px #ffffff;
 }
 
-
-
+#workspaces button.active {
+    background-color: #6472ff;
+    box-shadow: inset 0 -3px #ffffff;
+}
 #workspaces button.urgent {
     background-color: #eb4d4b;
 }
@@ -223,7 +232,7 @@ button:hover {
     border-bottom: 1px solid #fffff0;
 }
 
-#clock,
+ #clock,
 #battery,
 #cpu,
 #memory,
@@ -240,7 +249,7 @@ button:hover {
 #scratchpad,
 #custom-sshutle 
 #mpd {
-    padding: 0 2px;
+  
     color: #ffffff;
 }
 
@@ -260,7 +269,8 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: #A4BDD1;
+    color : black;
 }
 
 #battery {
@@ -438,8 +448,8 @@ label:focus {
 }
 
 #custom-jalali {
-    background-color: #3ebc91;
-    color: white ;
+    background-color: #A4BDD1;
+    color: black  ;
 }
 
 #custom-keyboard_layout {
@@ -456,10 +466,6 @@ tooltip label {
     font-size: 15px;
     
 }
-
-
-
-
 '' ;
     };
   };
