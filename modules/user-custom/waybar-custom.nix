@@ -142,17 +142,19 @@ in  {
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+
     font-size: 9px;
-    padding:0px 3px;
-    margin : 0px 1px ;
+    padding:0 2px;
+    margin : 0 2px ;
     min-height : 0px;
    border-radius : 5px;
-    
+   background-color: transparent;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 2px solid rgba(100, 114, 125, 0.5);
+    /* background-color: rgba(43, 48, 59, 0.5); */
+    border: none;
+    /* border-bottom: 2px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -177,6 +179,7 @@ window#waybar.termite {
 
 window#waybar.chromium {
     background-color: #000000;
+    
     border: none;
 }
 
@@ -200,12 +203,12 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 1px;
-    margin : 0 1px;
+    padding: 0  5px ;
+    margin : 0;
     border-radius : 3px;
     background-color: transparent;
     color: #ffffff;
-    
+    min-width : 5px ;
 }
 
 #workspaces button:hover {
@@ -220,7 +223,7 @@ workspaces button.focused {
 }
 
 #workspaces button.active {
-    background-color: #6472ff;
+    background-color: #6e8cA6;
     box-shadow: inset 0 -3px #ffffff;
 }
 #workspaces button.urgent {
@@ -229,7 +232,7 @@ workspaces button.focused {
 
 #mode {
     background-color: #64727D;
-    border-bottom: 1px solid #fffff0;
+     border-bottom: 1px solid #fffff0;
 }
 
  #clock,
@@ -252,6 +255,12 @@ workspaces button.focused {
   
     color: #ffffff;
 }
+.modules-left,
+.modules-right ,
+.modules-center {
+                padding-top :  2px ;
+                margin-top  : 2px;
+}
 
 #window,
 #workspaces {
@@ -269,8 +278,8 @@ workspaces button.focused {
 }
 
 #clock {
-    background-color: #A4BDD1;
-    color : black;
+    background-color: #647890;
+    color : white ;
 }
 
 #battery {
@@ -448,8 +457,8 @@ label:focus {
 }
 
 #custom-jalali {
-    background-color: #A4BDD1;
-    color: black  ;
+    background-color: #647890;
+    color: white   ;
 }
 
 #custom-keyboard_layout {
