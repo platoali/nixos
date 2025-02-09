@@ -27,14 +27,21 @@ in  {
           modules-right =  ["mpd" "custom/keyboard_layout"   "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  ];
 
           "hyprland/workspaces"  = {
-            format = "<sub>{icon}</sub>\n";
-            format-window-separator = "\n";
-            window-rewrite-default = "";
-            # window-rewrite =  {
-            #   "title<.*youtube.*>" =  ""; 
-            #     "class<firefox>" = "" ; 
-            #     "class<firefox> title<.*github.*>" =  "";
-	          # };
+            format = "{name}:  {windows}";
+            #format = "<sub>{icon}</sub>\n";
+            format-window-separator = "   ";
+           window-rewrite-default = "";
+            window-rewrite =  {
+              "title<.*youtube.*>" =  ""; 
+              "class<firefox>" = "" ;
+              "class<Emacs>" = "" ;
+              #"class<Emacs>" = "" ;
+              "class<Alacritty>"="";
+              "class<.*qutebrowser>"="";
+              "title<.*github.*>" =  "";
+              "class<.*zathura>"="";
+              
+	          };
           };
 
           "mpd" =  {
@@ -131,9 +138,9 @@ in  {
           };
 
           "clock" =  {
-            "format" = "{:%Y-%m-%d %H:%M}";            
+            "format" = "{:%H-%M}";
             "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            "format-alt" =  "{:%H-%M}";
+            "format-alt" =  "{:%Y-%m-%d %H:%M}";            
           };
         };
       };
@@ -143,11 +150,11 @@ in  {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
 
-    font-size: 9px;
+    font-size: 11px;
     padding:0 2px;
     margin : 0 2px ;
     min-height : 0px;
-   border-radius : 5px;
+   border-radius : 2px;
    background-color: transparent;
 }
 
@@ -198,6 +205,7 @@ button:hover {
 }
 
 #workspaces {
+            font-weight: bold;
             margin: 0px;
             padding: 0px;
 }
@@ -224,7 +232,7 @@ workspaces button.focused {
 
 #workspaces button.active {
     background-color: #6e8cA6;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -1px #ffffff;
 }
 #workspaces button.urgent {
     background-color: #eb4d4b;
@@ -403,7 +411,7 @@ label:focus {
 
 #mpd {
     background-color: #66cc99;
-    color: #2a5c45;
+    color: white  /* #2a5c45 */;
 }
 
 #mpd.disconnected {

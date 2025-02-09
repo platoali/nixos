@@ -133,10 +133,8 @@
     dina-font
     proggyfonts
     vazir-fonts
-    #  nerdfonts
-    awesome
-    font-awesome_4
-    font-awesome_5
+    nerd-fonts.symbols-only
+    font-awesome_6
   ];
    # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
    #    "steam"

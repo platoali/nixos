@@ -65,7 +65,7 @@ in {
         firefox 
         blesh 
         helvum
-        blender-hip
+        #blender-hip
         amdgpu_top
         gimp
         feh
@@ -107,7 +107,7 @@ in {
         bc 
         haskellPackages.hakyll
         cabal2nix
-        #zeroad
+       zeroad
         zlib
         telegram-desktop
         s-tui
@@ -128,6 +128,9 @@ in {
         mtr
         warzone2100
         haskellPackages.parsec_3_1_17_0
+        unzip
+        zip
+        piper
       ];
     };
   };
