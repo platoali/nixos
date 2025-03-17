@@ -38,6 +38,7 @@ in {
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
       xdg.portal.enable  = true;
+      xdg.configFile."mimeapps.list".force = true;
     # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
       xdg.portal.config.common.default = "*";
       xdg.mimeApps  = {
@@ -65,7 +66,7 @@ in {
         firefox 
         blesh 
         helvum
-        #blender-hip
+        blender-hip
         amdgpu_top
         gimp
         feh

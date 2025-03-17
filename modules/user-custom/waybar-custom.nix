@@ -24,7 +24,7 @@ in  {
           height = 4;
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock" "custom/jalali"];
-          modules-right =  ["mpd" "custom/keyboard_layout"   "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  ];
+          modules-right =  ["hyprland/language"  "mpd"    "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  ];
 
           "hyprland/workspaces"  = {
             format = "{name}:  {windows}";
@@ -32,11 +32,15 @@ in  {
             format-window-separator = "   ";
            window-rewrite-default = "";
             window-rewrite =  {
-              "title<.*youtube.*>" =  ""; 
+              "title<.*youtube.*>" =  "";
+              "title<.*reddit.*>" =  "";
+              "class<blender>" = "";
               "class<firefox>" = "" ;
               "class<Emacs>" = "" ;
+              "class<0ad>"="";
               #"class<Emacs>" = "" ;
               "class<Alacritty>"="";
+              "class<org.telegram.*>" = "";
               "class<.*qutebrowser>"="";
               "title<.*github.*>" =  "";
               "class<.*zathura>"="";
@@ -45,9 +49,9 @@ in  {
           };
 
           "mpd" =  {
-            "format" =  "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S})  {volume}% ";
-            "format-disconnected" = "Disconnected ";
-            "format-stopped" = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
+            "format" =  "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S})  {volume}% ";
+            "format-disconnected" = "Disconnected ";
+            "format-stopped" = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
             "unknown-tag" = "N/A";
             "interval" = 2;
             "consume-icons" =  {
@@ -93,7 +97,7 @@ in  {
           
           "custom/sshuttle"  = {
             "format" = "{}";
-            "exec" = " systemctl --user status sshuttle.service | grep Activ | awk '{if ($2 == \"active\") {print \"\"} else {print \"x\"}}'" ;
+            "exec" = " systemctl --user status sshuttle.service | grep Activ | awk '{if ($2 == \"active\") {print \"\"} else {print \"\"}}'" ;
             "interval"  = 2;
             "on-click"  =  "${cfg.sshuttleToggleScript}";
           };
@@ -123,7 +127,9 @@ in  {
             #// "thermal-zone": 2,
             # // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
             #// 	"hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
-	          "hwmon-path" = "/sys/class/hwmon/hwmon3/temp1_input";
+	          "hwmon-path" = "/sys/class/hwmon/hwmon6/temp1_input";
+            #"hwmon-path-abs" =" /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon6";
+
             #            //        "input-filename": "temp1_input",
             "critical-threshold" = 80;
             #        // "format-critical": "{temperatureC}°C {icon}",
@@ -135,6 +141,12 @@ in  {
             "format" = "{}";
             "exec" = "${cfg.jalaliScript}";
             "interval"  = 3600;
+          };
+
+          "hyprland/language" = {
+	          "format"  =  "{short}";
+  	        "keyboard-name" = "daskeyboard";
+            "on-click" = " hyprctl switchxkblayout daskeyboard next";
           };
 
           "clock" =  {
