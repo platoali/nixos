@@ -68,7 +68,7 @@ in {
         helvum
         blender-hip
         amdgpu_top
-        gimp
+        gimp-with-plugins 
         feh
         zathura
         scrot
@@ -92,10 +92,10 @@ in {
         sshuttle
         git
         mpc-cli
-        obs-studio
+        #obs-studio
         krita 
         #emacs
-        nomacs 
+        #nomacs 
         wpaperd
         mpvpaper
         grim
@@ -107,7 +107,7 @@ in {
         cliphist
         bc 
         haskellPackages.hakyll
-        cabal2nix
+    #    cabal2nix
        zeroad
         zlib
         telegram-desktop
@@ -115,7 +115,7 @@ in {
         stress
         mpv
         hyprcursor
-        brave
+      #  brave
         scummvm
         p7zip
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -132,6 +132,11 @@ in {
         unzip
         zip
         piper
+        ripgrep
+        jcal
+        hunspell
+        hunspellDicts.fa-ir 
+        hunspellDicts.en-us
       ];
     };
   };

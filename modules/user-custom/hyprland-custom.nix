@@ -7,7 +7,11 @@ in  {
     sshuttleToggleScript = lib.mkOption {
       default = "${../../auxFiles/sshuttleToggle.sh}" ;
        description = "stcipt to toggle the sshuttle vpn service" ;
-     };
+    };
+    backGroundImage = lib.mkOption {
+      default = "${../../auxFiles/IMG_20190501_170029.jpg}";
+      description = "Image as a background Image";
+    };
   } ;
 
   config  = lib.mkIf cfg.enable {
@@ -187,7 +191,7 @@ in  {
         "dbus-update-activation-environment --systemd --all"
         "waybar"
         "mako"
-        "swaybg -m fill -i /home/platoali/Photos/IMG_20190501_170029.jpg"
+        "swaybg -m fill -i  ${cfg.backGroundImage }" 
         #exec-once = hyprpaper 0
         "wl-paste --type text --watch cliphist store "
         "wl-paste --type image --watch cliphist store "
