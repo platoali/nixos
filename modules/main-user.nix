@@ -79,7 +79,7 @@ in {
         haskellPackages.safe
         haskellPackages.split
         haskellPackages.zlib
-  #      haskellPackages.containers 
+        #haskellPackages.containers 
         ghc
         alacritty
         swaylock
@@ -137,6 +137,7 @@ in {
         hunspell
         hunspellDicts.fa-ir 
         hunspellDicts.en-us
+        hyprland-per-window-layout
       ];
     };
   };
