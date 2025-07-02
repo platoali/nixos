@@ -14,7 +14,9 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+  services.tumbler.enable = true;
  networking.hostName = "nixos";
 
   # Set your time zone.
@@ -43,7 +45,7 @@
    main-user.userName = "platoali" ;
 
    sshuttle-service.enable = true;
-   sshuttle-service.host = "sahar:4000";
+   sshuttle-service.host = "sahar:14000";
    sshuttle-service.netrange = "0/0";
    sshuttle-service.user = "platoali" ;
    sshuttle-service.sshuttleConnectionOptions = " --dns" ;
@@ -78,16 +80,15 @@
       install = true ;
     };
 
-#    services.dictd.enable = true;
-  #  services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
-#    networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-
-   services.resolved = {
-      enable = false ;
+    services.dictd.enable = true;
+    services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
+    networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    services.resolved = {
+      enable = true  ;
       dnssec = "true";
       domains = [ "~." ];
-  #    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-      dnsovertls = "true";
+      fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+     # dnsovertls = "true";
     };
     
     services.greetd = {
@@ -136,10 +137,15 @@
     nerd-fonts.symbols-only
     font-awesome_6
   ];
-   # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-   #    "steam"
-   #     "steam-original"
-   #  ];
+   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+       "mprime"
+           ];
+  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #   "mprime"
+  #    # "steam"
+  #     # "steam-original"
+  # ];
+  nixpkgs.config.allowUnfree = true;
    #  programs.steam  = {
    #      enable = true;
    # };

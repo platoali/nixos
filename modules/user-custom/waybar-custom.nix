@@ -43,6 +43,7 @@ in  {
               "class<org.telegram.*>" = "";
               "class<.*qutebrowser>"="";
               "title<.*github.*>" =  "";
+              "title<.*whatsapp.*>" = "";
               "class<.*zathura>"="";
               
 	          };

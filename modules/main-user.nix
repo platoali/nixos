@@ -41,6 +41,18 @@ in {
       xdg.configFile."mimeapps.list".force = true;
     # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
       xdg.portal.config.common.default = "*";
+
+      services.udiskie = {
+        enable = true;
+        settings = {
+          # workaround for
+          # https://github.com/nix-community/home-manager/issues/632
+          program_options = {
+            # replace with your favorite file manager
+            file_manager = "${pkgs.xfce.thunar}/bin/thunar";
+          };
+        };
+      };
       xdg.mimeApps  = {
         enable = true;
         associations.added = {
@@ -61,14 +73,23 @@ in {
         };
       };
       
+
+      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+       "mprime" 
+           ];
       home.stateVersion = "24.11";
       home.packages = with pkgs; [
-        firefox 
+        #obs-studio
+        #krita 
+        #blender-hip
+        #brave
+        #scummvm
+        #warzone2100
+        #firefox 
         blesh 
         helvum
-        blender-hip
         amdgpu_top
-        gimp-with-plugins 
+        gimp3-with-plugins 
         feh
         zathura
         scrot
@@ -79,7 +100,6 @@ in {
         haskellPackages.safe
         haskellPackages.split
         haskellPackages.zlib
-        #haskellPackages.containers 
         ghc
         alacritty
         swaylock
@@ -92,10 +112,6 @@ in {
         sshuttle
         git
         mpc-cli
-        #obs-studio
-        krita 
-        #emacs
-        #nomacs 
         wpaperd
         mpvpaper
         grim
@@ -107,7 +123,6 @@ in {
         cliphist
         bc 
         haskellPackages.hakyll
-    #    cabal2nix
        zeroad
         zlib
         telegram-desktop
@@ -115,11 +130,8 @@ in {
         stress
         mpv
         hyprcursor
-      #  brave
-        scummvm
         p7zip
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-        #        inputs.yazi.packages.${pkgs.system}.default
         yazi
         hyprsunset
         nh
@@ -127,8 +139,7 @@ in {
         tmux
         iotop
         mtr
-        warzone2100
-        haskellPackages.parsec_3_1_17_0
+        haskellPackages.parsec_3_1_18_0
         unzip
         zip
         piper
@@ -138,6 +149,10 @@ in {
         hunspellDicts.fa-ir 
         hunspellDicts.en-us
         hyprland-per-window-layout
+        darktable
+        rawtherapee
+        xfce.thunar
+        v2raya
       ];
     };
   };
