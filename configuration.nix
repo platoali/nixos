@@ -35,7 +35,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-     ];
+  ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.hardware.openrgb.enable = true;
@@ -45,7 +45,7 @@
    main-user.userName = "platoali" ;
 
    sshuttle-service.enable = true;
-   sshuttle-service.host = "sahar:14000";
+   sshuttle-service.host = "sahar:4000";
    sshuttle-service.netrange = "0/0";
    sshuttle-service.user = "platoali" ;
    sshuttle-service.sshuttleConnectionOptions = " --dns" ;
@@ -62,7 +62,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
    # };
-   
+   security.polkit.enable = true;
    security.pam.services.swaylock = {};
     # xdg.mime.enable = true;
     # xdg.mime.defaultApplications = {
@@ -80,8 +80,8 @@
       install = true ;
     };
 
-    services.dictd.enable = true;
-    services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
+#    services.dictd.enable = true;
+  #  services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
     networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
     services.resolved = {
       enable = true  ;
@@ -145,7 +145,12 @@
   #    # "steam"
   #     # "steam-original"
   # ];
-  nixpkgs.config.allowUnfree = true;
+   nixpkgs.config.allowUnfree = true;
+    programs.dconf.enable = true;
+   # environment.variables = rec {
+   #   GSETTINGS_SCHEMA_DIR="${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+   # }; 
+
    #  programs.steam  = {
    #      enable = true;
    # };

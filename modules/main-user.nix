@@ -78,14 +78,24 @@ in {
        "mprime" 
            ];
       home.stateVersion = "24.11";
+      # nixpkgs.overlays  = [
+      #   (self: super: {
+      #     darktable = super.darktable.overrideAttrs(finalAttrs: prevAttrs : {
+      #       stdenv = super.stdenvAdapters.addAttrsToDerivation {
+      #       };
+      #       buildInputs  =  lib.remove  super.libavif  prevAttrs.buildInputs ;
+      #     });
+      #   }
+      #   )
+      # ];
       home.packages = with pkgs; [
         #obs-studio
-        #krita 
-        #blender-hip
+        krita 
+        blender-hip
         #brave
         #scummvm
         #warzone2100
-        #firefox 
+        firefox 
         blesh 
         helvum
         amdgpu_top
@@ -149,10 +159,13 @@ in {
         hunspellDicts.fa-ir 
         hunspellDicts.en-us
         hyprland-per-window-layout
+        hyprpolkitagent
         darktable
         rawtherapee
         xfce.thunar
         v2raya
+        adwaita-icon-theme
+        gtk3
       ];
     };
   };
