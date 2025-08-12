@@ -25,7 +25,7 @@ in  {
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock" "custom/jalali"];
           modules-right =  ["hyprland/language"  "mpd"    "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  ];
-
+  #        modules-right =  [  "mpd"    "wireplumber" "custom/sshuttle"  "network"  "cpu"  "memory"  "temperature"  ];
           "hyprland/workspaces"  = {
             format = "{name}:  {windows}";
             #format = "<sub>{icon}</sub>\n";
@@ -38,14 +38,12 @@ in  {
               "class<firefox>" = "" ;
               "class<Emacs>" = "" ;
               "class<0ad>"="";
-              #"class<Emacs>" = "" ;
               "class<Alacritty>"="";
               "class<org.telegram.*>" = "";
               "class<.*qutebrowser>"="";
               "title<.*github.*>" =  "";
               "title<.*whatsapp.*>" = "";
               "class<.*zathura>"="";
-              
 	          };
           };
 

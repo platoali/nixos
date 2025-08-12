@@ -82,21 +82,20 @@
 
 #    services.dictd.enable = true;
   #  services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
-    networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    services.resolved = {
-      enable = true  ;
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-     # dnsovertls = "true";
-    };
+     networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+     services.resolved = {
+       enable = true  ;
+       dnssec = "true";
+       domains = [ "~." ];
+      fallbackDns = [ "4.2.2.4" "192.9.9.3" ];
+    #  # dnsovertls = "true";
+     };
     
     services.greetd = {
       enable = true;
       settings = {
         default_session = {
-          #          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprlanda" ;
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time" ;
+            command = "${pkgs.tuigreet}/bin/tuigreet --time" ;
         };
       };
     };

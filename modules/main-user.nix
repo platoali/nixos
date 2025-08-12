@@ -160,11 +160,11 @@ in {
         hunspellDicts.en-us
         hyprland-per-window-layout
         hyprpolkitagent
-        darktable
+       #darktable
         rawtherapee
         xfce.thunar
-        v2raya
-        adwaita-icon-theme
+       # v2raya
+       adwaita-icon-theme
         gtk3
       ];
     };
