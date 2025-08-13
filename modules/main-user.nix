@@ -160,7 +160,7 @@ in {
         hunspellDicts.en-us
         hyprland-per-window-layout
         hyprpolkitagent
-       #darktable
+       darktable
         rawtherapee
         xfce.thunar
        # v2raya
