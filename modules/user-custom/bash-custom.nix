@@ -21,6 +21,7 @@ export PATH=/home/platoali/bin:$PATH
 # User specific aliases and functions
 alias leila='ssh -p 4022 leila.1024s.com'
 alias ec='emacsclient -c'
+alias msh='mosh --ssh="ssh -p 14000" '
 #xmodmap -e "clear mod5"
 #xmodmap -e "keycode 108 = Alt_L"
 #xmodmap .xmodmap

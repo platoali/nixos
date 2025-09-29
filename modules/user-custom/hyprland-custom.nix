@@ -102,7 +102,7 @@ in  {
 
       gestures  = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = "off";
+        #workspace_swipe = "off";
       };
       animations  = {
         enabled = "yes";
@@ -198,7 +198,7 @@ in  {
         "swayidle -w timeout 600 'swaylock -f ' timeout 605 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'swaylock -f'"
         "qutebrowser --nowindow"
         "hyprland-per-window-layout"
-        "hyprsunset -t 5000"
+#        "hyprsunset -t 5000"
       ];
     };
   };

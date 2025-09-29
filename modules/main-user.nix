@@ -29,7 +29,15 @@ in {
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
       ];
-      
+
+
+      programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
+      programs.starship = {
+        enable = true;
+      };     
       bash-custom.enable = true  ;
       hyprland-custom-module.enable  = true ;
       zathura-custom.enable = true ;
@@ -91,7 +99,7 @@ in {
       home.packages = with pkgs; [
         #obs-studio
         krita 
-        blender-hip
+        blender
         #brave
         #scummvm
         #warzone2100
@@ -151,6 +159,7 @@ in {
         mtr
         haskellPackages.parsec_3_1_18_0
         unzip
+        #zed-editor
         zip
         piper
         ripgrep
@@ -166,6 +175,7 @@ in {
        # v2raya
        adwaita-icon-theme
         gtk3
+        mosh 
       ];
     };
   };

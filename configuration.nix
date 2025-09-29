@@ -24,7 +24,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking.extraHosts = ''
-136.243.240.66 sahar
+195.201.181.62 sahar
 '';
   
   # Select internationalisation properties.
@@ -48,7 +48,7 @@
    sshuttle-service.host = "sahar:4000";
    sshuttle-service.netrange = "0/0";
    sshuttle-service.user = "platoali" ;
-   sshuttle-service.sshuttleConnectionOptions = " --dns" ;
+   sshuttle-service.sshuttleConnectionOptions = " --dns -x 192.168.1.0/24 -x 127.0.0.1/8" ;
 
    open-rgb-service.enable = true;
    open-rgb-service.color = "010101";
