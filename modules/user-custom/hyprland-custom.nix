@@ -141,7 +141,7 @@ in  {
         "$mainMod, F, fullscreen"
         "$mainMod, R, exec, wofi --show run"
         "$mainMod, S, exec, ${cfg.sshuttleToggleScript}"
-        "$mainMod, return, exec ,alacritty -o font.size=12"
+        "$mainMod, return, exec ,alacritty"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"

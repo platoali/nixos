@@ -18,24 +18,9 @@ if [ -f /etc/bashrc ]; then
 . /etc/bashrc
 fi
 export PATH=/home/platoali/bin:$PATH
-# User specific aliases and functions
-alias leila='ssh -p 4022 leila.1024s.com'
 alias ec='emacsclient -c'
-alias msh='mosh --ssh="ssh -p 14000" '
-#xmodmap -e "clear mod5"
-#xmodmap -e "keycode 108 = Alt_L"
-#xmodmap .xmodmap
-#xmodmap -e "keycode 108 = Alt_R Meta_R Alt_R Meta_R"
-#xmodmap -e "keycode 135 = ISO_Level3_Shift"
+alias sahar='mosh --ssh="ssh -p 14000" sahar '
 export PATH="$HOME/.local/bin:$HOME/bin/:$PATH"
-# alias emacs='emacs -nw'
-# stack auto complete
-# eval "$(stack --bash-completion-script stack)"
-
-#[ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
-#[ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
-# [ -f "/home/platoali/.ghcup/env" ] && source "/home/platoali/.ghcup/env" # ghcup-env
-#[ -f "/usr/share/fzf/key-bindings.bash" ] && source "/usr/share/fzf/key-bindings.bash"
 export EDITOR="emacsclient -c"
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 GIT_PROMPT_ONLY_IN_REPO=1

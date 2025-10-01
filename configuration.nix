@@ -135,6 +135,7 @@
     vazir-fonts
     nerd-fonts.symbols-only
     font-awesome_6
+    jetbrains-mono
   ];
    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
        "mprime"

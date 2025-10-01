@@ -28,6 +28,7 @@ in {
         ./user-custom/emacs-custom.nix
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
+        ./user-custom/alacritty.nix 
       ];
 
 
@@ -46,6 +47,7 @@ in {
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
       xdg.portal.enable  = true;
+      alacritty-custom.enable = true;
       xdg.configFile."mimeapps.list".force = true;
     # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
       xdg.portal.config.common.default = "*";
@@ -115,11 +117,11 @@ in {
         stack
         haskellPackages.haskell-language-server
         haskellPackages.hasktags
-        haskellPackages.safe
-        haskellPackages.split
-        haskellPackages.zlib
+    #    haskellPackages.safe
+     #  haskellPackages.split
+      # haskellPackages.zlib
         ghc
-        alacritty
+        #alacritty
         swaylock
         swayidle 
         swaybg
@@ -140,7 +142,7 @@ in {
         wl-clipboard
         cliphist
         bc 
-        haskellPackages.hakyll
+   #     haskellPackages.hakyll
        zeroad
         zlib
         telegram-desktop
@@ -173,7 +175,7 @@ in {
         rawtherapee
         xfce.thunar
        # v2raya
-       adwaita-icon-theme
+        adwaita-icon-theme
         gtk3
         mosh 
       ];
