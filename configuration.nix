@@ -120,6 +120,15 @@
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
     };
+
+    nix.gc =  {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    system.autoUpgrade.enable = true;
+    system.autoUpgrade.allowReboot = false;
     
   fonts.packages = with pkgs; [
     roboto 
