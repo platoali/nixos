@@ -15,8 +15,17 @@
     nixosConfigurations.nixos  = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        ./configuration.nix       
-        inputs.home-manager.nixosModules.default
+        
+        ./configuration.nix
+        ./hardware-configuration.nix
+        inputs.home-manager.nixosModules.default 
+        ./modules/main-user.nix
+        ./modules/sshuttle.service.nix
+        ./modules/rgb.service.nix
+        ./modules/virt-manager.nix
+        ./modules/mpd_custom_service.nix
+    
+#        inputs.home-manager.nixosModules.default
       ];
     };
   };

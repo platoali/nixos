@@ -3,13 +3,13 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default 
-      ./modules/main-user.nix
-      ./modules/sshuttle.service.nix
-      ./modules/rgb.service.nix
-      ./modules/virt-manager.nix
-      ./modules/mpd_custom_service.nix
+      # ./hardware-configuration.nix
+      # inputs.home-manager.nixosModules.default 
+      # ./modules/main-user.nix
+      # ./modules/sshuttle.service.nix
+      # ./modules/rgb.service.nix
+      # ./modules/virt-manager.nix
+      # ./modules/mpd_custom_service.nix
     ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -17,7 +17,8 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.tumbler.enable = true;
- networking.hostName = "nixos";
+  
+  networking.hostName = "nixos";
 
   # Set your time zone.
   time.timeZone = "Asia/Tehran";

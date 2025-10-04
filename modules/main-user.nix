@@ -177,7 +177,8 @@ in {
        # v2raya
         adwaita-icon-theme
         gtk3
-        mosh 
+        mosh
+
       ];
     };
   };

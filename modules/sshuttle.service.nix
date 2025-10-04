@@ -193,6 +193,9 @@ ${cfg.user}  ALL=NOPASSWD: SSHUTTLEBDF
        ExecStart ="${cfg.sshuttleServiceScript}  start";
        ExecStop =" ${cfg.sshuttleServiceScript}  stop";
        Type = "forking";
+       Restart="on-failure";
+#       onFailure = "restart" ;
+       
      };
    };
   };
