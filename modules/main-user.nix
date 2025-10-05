@@ -58,6 +58,8 @@ in {
       xdg.portal.enable  = true;
       alacritty-custom.enable = true;
       ssh-custom.enable = true;
+      ssh-custom.identity_file = "~/.ssh/id_ed25519-github";
+      ssh-custom.host = "github.com" ;
       
       xdg.configFile."mimeapps.list".force = true;
     # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];

@@ -4,7 +4,15 @@ let
 in {
   options.ssh-custom = {
     enable = lib.mkEnableOption "enable ssh custom config ";
-    
+    identity_file = lib.mkOption {
+      default = "~/.ssh/id_ed25519-github";
+      description = "identity key file host" ;
+    };
+
+    host = lib.mkOption {
+      default = "github.com";
+      description = "hostname";
+    };
   };
   config = lib.mkIf cfg.enable { 
     programs.ssh = {
@@ -23,9 +31,9 @@ in {
         controlPersist = "no";
       };
       extraConfig = ''
-Host github.com
+Host ${cfg.host}
     AddKeysToAgent yes
-    IdentityFile ~/.ssh/id_ed25519-github 
+    IdentityFile ${cfg.identity_file}
   '';
     };
   };
