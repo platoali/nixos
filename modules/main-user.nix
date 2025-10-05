@@ -5,7 +5,7 @@ in {
   options.main-user = {
     enable = lib.mkEnableOption " enable user module" ;
     userName  = lib.mkOption {
-      default = "mainuser";
+      default = "platoali";
       description = '' username '';                 
     };
   } ;
@@ -31,32 +31,11 @@ in {
         ./user-custom/emacs-custom.nix
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
-        ./user-custom/alacritty.nix 
+        ./user-custom/alacritty.nix
+        ./user-custom/ssh-custom.nix 
       ];
    
-      programs.ssh = {
-        enable = true ;
-        enableDefaultConfig= false;
-        matchBlocks."*" = {
-          forwardAgent = false;
-          addKeysToAgent = "no";
-          compression = false;
-          serverAliveInterval = 0;
-          serverAliveCountMax = 3;
-          hashKnownHosts = false;
-          userKnownHostsFile = "~/.ssh/known_hosts";
-          controlMaster = "no";
-          controlPath = "~/.ssh/master-%r@%n:%p";
-          controlPersist = "no";
-        };
-        extraConfig = ''
-Host github.com
-    AddKeysToAgent yes
-    IdentityFile ~/.ssh/id_ed25519-github 
-  '';
-      };
-
-
+    
       services.gnome-keyring = {
         enable = true;
         components = [ "ssh" "secrets" "pkcs11" ];
@@ -69,15 +48,17 @@ Host github.com
       programs.starship = {
         enable = true;
       };     
-      bash-custom.enable = true  ;
-      hyprland-custom-module.enable  = true ;
-      zathura-custom.enable = true ;
-      emacs-custom.enable = true ;
+      bash-custom.enable = true;
+      hyprland-custom-module.enable = true;
+      zathura-custom.enable = true;
+      emacs-custom.enable = true;
       git-custom.enable = true;
       waybar-custom.enable  = true;
       programs.home-manager.enable = true;
       xdg.portal.enable  = true;
       alacritty-custom.enable = true;
+      ssh-custom.enable = true;
+      
       xdg.configFile."mimeapps.list".force = true;
     # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
       xdg.portal.config.common.default = "*";
@@ -114,20 +95,9 @@ Host github.com
       };
       
 
-      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-       "mprime" 
-           ];
+      # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [];
       home.stateVersion = "24.11";
-      # nixpkgs.overlays  = [
-      #   (self: super: {
-      #     darktable = super.darktable.overrideAttrs(finalAttrs: prevAttrs : {
-      #       stdenv = super.stdenvAdapters.addAttrsToDerivation {
-      #       };
-      #       buildInputs  =  lib.remove  super.libavif  prevAttrs.buildInputs ;
-      #     });
-      #   }
-      #   )
-      # ];
+      
       home.packages = with pkgs; [
         #obs-studio
         krita 
@@ -173,7 +143,7 @@ Host github.com
         cliphist
         bc 
    #     haskellPackages.hakyll
-       zeroad
+        zeroad
         zlib
         telegram-desktop
         s-tui
@@ -201,7 +171,7 @@ Host github.com
         hunspellDicts.en-us
         hyprland-per-window-layout
         hyprpolkitagent
-       darktable
+        darktable
         rawtherapee
         xfce.thunar
        # v2raya
