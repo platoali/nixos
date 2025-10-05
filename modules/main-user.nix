@@ -20,6 +20,20 @@ in {
     services.dictd.DBs = with pkgs.dictdDBs; [  wordnet ];
     home-manager.backupFileExtension = "backup" ;
     programs.hyprland.withUWSM  = true;
+
+    programs.ssh = {
+      startAgent = true;
+
+      extraConfig = ''
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519-github 
+
+
+
+  '';
+    };
+
+
     home-manager.users.${cfg.userName} = {pkgs, ... }: {
       imports = [
         ./user-custom/bash-custom.nix
@@ -31,6 +45,14 @@ in {
         ./user-custom/alacritty.nix 
       ];
 
+   
+
+
+
+      services.gnome-keyring = {
+        enable = true;
+        components = [ "ssh" "secrets" "pkcs11" ];
+      };
 
       programs.direnv = {
         enable = true;
