@@ -32,7 +32,7 @@ in {
         ./user-custom/waybar-custom.nix
         ./user-custom/git-custom.nix
         ./user-custom/alacritty.nix
-        ./user-custom/ssh-custom.nix 
+        ./user-custom/ssh-custom.nix
       ];
    
     
