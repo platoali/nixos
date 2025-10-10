@@ -138,14 +138,15 @@ in {
         mpvpaper
         grim
         mako
-        libnotify
+    #    libnotify
         exercism
         bats
         wl-clipboard
         cliphist
         bc 
    #     haskellPackages.hakyll
-        zeroad
+        # zeroad
+        localsend
         zlib
         telegram-desktop
         s-tui
@@ -178,7 +179,7 @@ in {
         xfce.thunar
        # v2raya
         adwaita-icon-theme
-        gtk3
+      #  gtk3
         mosh
 
       ];
