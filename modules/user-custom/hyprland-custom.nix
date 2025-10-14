@@ -17,7 +17,9 @@ in  {
   config  = lib.mkIf cfg.enable {
 
    wayland.windowManager.hyprland.systemd.enable = false;
-
+   wayland.windowManager.hyprland.plugins = [
+     pkgs.hyprlandPlugins.hyprscrolling
+   ];
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
     wayland.windowManager.hyprland.systemd.variables = ["--all"];
@@ -69,8 +71,18 @@ in  {
         border_size = 2;
         #col.active_border = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         #col.inactive_border = "rgba(595959aa)";
-        layout = "master";
+        #layout = "master";
+        layout = "scrolling";
         allow_tearing = false;
+      };
+
+      plugin = {
+        hyprscrolling = {
+          column_width =  0.7;
+          explicit_column_widths = "0.333, 0.5, 0.667, 1.0";
+          fullscreen_on_one_column = false ;
+          follow_focus = true;
+        };
       };
 
       decoration = {
@@ -130,6 +142,7 @@ in  {
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       bind = [
+#        "$mainMod, SHIFT, layoutmsg, colresize +
         "$mainMod, Q, exec, wlogout"
         "$mainMod, C, killactive, "
 #        " $mainMod, M, exit, "
@@ -173,8 +186,18 @@ in  {
         "$mainMod, l ,layoutmsg, cycleprev"
         "$mainMod SHIFT , l ,layoutmsg, swapprev"
         "$mainMod, k,layoutmsg, orientationcycle top left"
-        "$mainMod SHIFT , right , resizeactive, 10 0 "
-        "$mainMod SHIFT , left, resizeactive , -10 0"
+        #"$mainMod SHIFT , right , resizeactive, 10 0 "
+        #"$mainMod SHIFT , left, resizeactive , -10 0"
+        "$mainMod SHIFT , right, layoutmsg, colresize +conf"
+        "$mainMod SHIFT , left , layoutmsg, colresize -conf"
+        "$mainMod SHIFT , minus, layoutmsg, colresize -0.1"
+        "$mainMod SHIFT , equal , layoutmsg, colresize +0.1"
+
+        "$mainMod CTRL, right, layoutmsg, movewindowto r"
+        "$mainMod CTRL, left ,layoutmsg, movewindowto l"
+        "$mainMod CTRL, up, layoutmsg, movewindowto u"
+        "$mainMod CTRL, down  ,layoutmsg, movewindowto d"
+
         "$mainMod SHIFT , up , resizeactive, 0 -10  "
         "$mainMod SHIFT , down , resizeactive ,0 10 "
         "$mainMod, mouse_down, workspace, e+1"

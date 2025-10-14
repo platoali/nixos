@@ -145,7 +145,7 @@ in {
         cliphist
         bc 
    #     haskellPackages.hakyll
-        # zeroad
+        zeroad
         localsend
         zlib
         telegram-desktop
@@ -181,6 +181,20 @@ in {
         adwaita-icon-theme
       #  gtk3
         mosh
+        jcal
+        hunspell
+        hunspellDicts.fa-ir
+        hunspellDicts.en-us
+        hyprland-per-window-layout
+        hyprpolkitagent
+        darktable
+        rawtherapee
+        xfce.thunar
+       # v2raya
+        adwaita-icon-theme
+      #  gtk3
+        mosh
+        hyprlandPlugins.hyprscrolling
 
       ];
     };

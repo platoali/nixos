@@ -7,12 +7,18 @@ in  {
   };
 config =  lib.mkIf  cfg.enable   {
   programs.bash.enable = true;  	     
+  #programs.bash.blesh.enable = true;
   programs.bash.enableCompletion = true;
   programs.bash.historyIgnore = [ "ls" "cd" "exit"];
   programs.bash.initExtra = ''
+  
 
-[[ $- == *i* ]] && source $(blesh-share)/ble.sh  --noattach
+# [[ $- == *i* ]] && source $(blesh-share)/ble.sh  
 
+# Load ble.sh only for interactive shells
+if [[ $- == *i* && -f "${pkgs.blesh}/share/blesh/ble.sh" ]]; then
+  source "${pkgs.blesh}/share/blesh/ble.sh"
+fi
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 . /etc/bashrc
