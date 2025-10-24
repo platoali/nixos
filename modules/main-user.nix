@@ -64,6 +64,12 @@ in {
       xdg.configFile."mimeapps.list".force = true;
     # XXX: dg.portal.extraPortals = [pkgs.xdg-desktop-portal-hyprland ];
       xdg.portal.config.common.default = "*";
+      programs.nh = {
+        enable = true ;
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+        flake = "/home/platoali/.nixOsConfig/";
+      };
 
       services.udiskie = {
         enable = true;

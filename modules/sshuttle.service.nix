@@ -28,7 +28,8 @@ ssh_user = "${cfg.user}"  ## username thats used for SSH connection
 #pid_file =  "$ { pid_file}"
 rhost = "${cfg.host}"
 netrange = "${cfg.netrange}"
-options="${cfg.sshuttleConnectionOptions}" 
+options="${cfg.sshuttleConnectionOptions}"
+excludeHostFile = "${cfg.sshuttleExcludeHostFile}" 
 def precheck():
     if len(sys.argv) < 2:
         print("need to pass argument: start | stop | restart | status | toggle")
@@ -82,7 +83,7 @@ def start():
       #       netrange = netrange.strip()
                 
         # build rpath
-    rpath = "-r {0}@{1} {2}    {3} ".format(ssh_user, rhost, netrange,options)
+    rpath = "-r {0}@{1} {2} {3} -X {4}".format(ssh_user, rhost, netrange,options,excludeHostFile)
     try:
             print("starting sshuttle..")
             log.info("starting sshuttle for networks: %s via %s" % (netrange, rhost))
@@ -167,6 +168,11 @@ in
       default = sshuttleServiceScriptDefault ;
       description = "script that start and restart the service " ;
     };
+    sshuttleExcludeHost = lib.mkOption {
+      default = "../auxFiles/sshuttleExcludeFile.txt"
+        description = "file that contains networks that should be exclude from tunnel"
+    };
+
     sshuttleConnectionOptions = lib.mkOption {
       default  = " --dns --no-latency-control";
       description ="ssh connection options ";
