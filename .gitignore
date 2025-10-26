@@ -1,2 +1,83 @@
-/#*#
-*/#*#
+# ==========================
+# Nix / Flakes
+# ==========================
+
+# Build results
+/result
+/nix-result
+/home-manager-result
+
+# Temporary Nix files
+*.drv
+*.log
+*.lock.tmp
+*.bak
+*.tmp
+.locked
+
+# Direnv / nix-direnv
+.direnv/
+.envrc
+.env
+
+# Nix garbage collection roots
+.gcroots/
+*.gcroots
+.cache/
+tmp/
+
+# ==========================
+# Emacs files
+# ==========================
+
+# Backup and autosave files
+*~
+\#*\#
+.#*
+
+# Lock and autosave variants
+*/.#*
+*.autosave
+
+# TRAMP / Projectile / Misc
+.projectile
+.tramp_history
+
+# ==========================
+# System and misc
+# ==========================
+
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ==========================
+# Your repo-specific exclusions
+# ==========================
+
+# Local / temporary or editor-generated variants
+# of your core configuration files
+# (these appear in your ls listing)
+# e.g. '#flake.nix#' and '#configuration.nix#'
+\#*.nix\#
+*.nix~
+
+# Backup or temporary system configs
+hardware-configuration.nix.backup
+
+# auxFiles: ignore Emacs autosaves and temp files inside
+auxFiles/*~
+auxFiles/\#*\#
+auxFiles/*.autosave
+
+# Optional secrets or local overrides
+secrets.nix
+local.nix
+private.nix
+overrides.nix
+*.secret
+*.key
+*.pem
+*.enc
+
