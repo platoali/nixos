@@ -201,6 +201,6 @@
   nix.settings.cores = 24;
   nix.settings.download-attempts=20;
   nix.settings.http-connections=5;
-  nix.settings.download-speed=150;
+#  nix.settings.download-speed=150;
 }
 

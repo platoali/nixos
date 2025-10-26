@@ -168,9 +168,9 @@ in
       default = sshuttleServiceScriptDefault ;
       description = "script that start and restart the service " ;
     };
-    sshuttleExcludeHost = lib.mkOption {
-      default = "../auxFiles/sshuttleExcludeFile.txt"
-        description = "file that contains networks that should be exclude from tunnel"
+    sshuttleExcludeHostFile  = lib.mkOption {
+      default = "${../auxFiles/sshuttleExcludeFile.txt}";
+      description = "file that contains networks that should be exclude from tunnel";
     };
 
     sshuttleConnectionOptions = lib.mkOption {

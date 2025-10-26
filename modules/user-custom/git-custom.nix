@@ -9,8 +9,10 @@ in  {
   config  = lib.mkIf cfg.enable {
     programs.git = {
       enable = true ;
-      userName = "Ali A. Yazdi" ;
-      userEmail = "platoali@gmail.com";
+      settings = { 
+        user.name = "Ali A. Yazdi" ;
+        user.email = "platoali@gmail.com";
+      };
     };
 
   };

@@ -108,8 +108,8 @@ in {
       
       home.packages = with pkgs; [
         #obs-studio
-        krita 
-        blender
+        #krita 
+        #blender
         #brave
         #scummvm
         #warzone2100
@@ -151,7 +151,7 @@ in {
         cliphist
         bc 
    #     haskellPackages.hakyll
-        zeroad
+        #zeroad
         localsend
         zlib
         telegram-desktop
@@ -163,21 +163,18 @@ in {
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
         yazi
         hyprsunset
-        nh
+        #nh
         btop
         tmux
         iotop
         mtr
-        haskellPackages.parsec_3_1_18_0
+        # haskellPackages.parsec_3_1_18_0
         unzip
         #zed-editor
         zip
         piper
         ripgrep
         jcal
-        hunspell
-        hunspellDicts.fa-ir 
-        hunspellDicts.en-us
         hyprland-per-window-layout
         hyprpolkitagent
         darktable
@@ -201,7 +198,6 @@ in {
       #  gtk3
         mosh
         hyprlandPlugins.hyprscrolling
-
       ];
     };
   };

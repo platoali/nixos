@@ -79,7 +79,7 @@ in  {
       plugin = {
         hyprscrolling = {
           column_width =  0.7;
-          explicit_column_widths = "0.333, 0.5, 0.667, 1.0";
+          explicit_column_widths = "0.333, 0.50, 0.75,  1.0";
           fullscreen_on_one_column = false ;
           follow_focus = true;
         };
@@ -192,12 +192,24 @@ in  {
         "$mainMod SHIFT , left , layoutmsg, colresize -conf"
         "$mainMod SHIFT , minus, layoutmsg, colresize -0.1"
         "$mainMod SHIFT , equal , layoutmsg, colresize +0.1"
-
-        "$mainMod CTRL, right, layoutmsg, movewindowto r"
-        "$mainMod CTRL, left ,layoutmsg, movewindowto l"
-        "$mainMod CTRL, up, layoutmsg, movewindowto u"
-        "$mainMod CTRL, down  ,layoutmsg, movewindowto d"
-
+        "$mainMod , h , layoutmsg, focus l"
+        "$mainMod , l , layoutmsg, focus r"
+        "$mainMod , j , layoutmsg, focus u"
+        "$mainMod , k , layoutmsg, focus d"
+        # "$mainMod CTRL, right, layoutmsg, movewindowto r"
+        # "$mainMod CTRL, left ,layoutmsg, movewindowto l"
+        # "$mainMod CTRL, up, layoutmsg, movewindowto u"
+        # "$mainMod CTRL, down  ,layoutmsg, movewindowto d"
+        "$mainMod CTRL, l, layoutmsg, movewindowto r"
+        "$mainMod CTRL, h ,layoutmsg, movewindowto l"
+        "$mainMod CTRL, j, layoutmsg, movewindowto u"
+        "$mainMod CTRL, k  ,layoutmsg, movewindowto d"
+       
+        #"$mainMod ALT, right, layoutmsg, swapwindow r "
+        #"$mainMod ALT, left ,layoutmsg, swapwindow l"
+        "$mainMod CTRL , right , layoutmsg , swapcol r"
+        "$mainMod CTRL , left , layoutmsg , swapcol l" 
+        
         "$mainMod SHIFT , up , resizeactive, 0 -10  "
         "$mainMod SHIFT , down , resizeactive ,0 10 "
         "$mainMod, mouse_down, workspace, e+1"
