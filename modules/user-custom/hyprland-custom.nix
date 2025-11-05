@@ -1,4 +1,4 @@
-{lib , pkgs , config  ,  ... } :
+{lib , pkgs , config  , inputs ,  ... } :
 let
   cfg = config.hyprland-custom-module ;
 in  {
@@ -18,7 +18,9 @@ in  {
 
    wayland.windowManager.hyprland.systemd.enable = false;
    wayland.windowManager.hyprland.plugins = [
+
      pkgs.hyprlandPlugins.hyprscrolling
+
    ];
     wayland.windowManager.hyprland.enable = true;
     wayland.windowManager.hyprland.xwayland.enable = true;
@@ -80,7 +82,7 @@ in  {
         hyprscrolling = {
           column_width =  0.7;
           explicit_column_widths = "0.333, 0.50, 0.75,  1.0";
-          fullscreen_on_one_column = false ;
+          fullscreen_on_one_column = true;
           follow_focus = true;
         };
       };
@@ -101,16 +103,16 @@ in  {
         };
         #   col.shadow = "rgba(1a1a1aee)";
       };
-      dwindle  = {
-        # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-        pseudotile = "yes" ;# master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = "yes"; # you probably want this
-      };
+      # dwindle  = {
+      #   # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+      #   pseudotile = "yes" ;# master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+      #   preserve_split = "yes"; # you probably want this
+      # };
 
-      master = {
-        # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-       # new_is_master = false;
-      };
+      # master = {
+      #   # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+      #  # new_is_master = false;
+      # };
 
       gestures  = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
@@ -205,16 +207,18 @@ in  {
         "$mainMod CTRL, j, layoutmsg, movewindowto u"
         "$mainMod CTRL, k  ,layoutmsg, movewindowto d"
        
-        #"$mainMod ALT, right, layoutmsg, swapwindow r "
-        #"$mainMod ALT, left ,layoutmsg, swapwindow l"
-        "$mainMod CTRL , right , layoutmsg , swapcol r"
-        "$mainMod CTRL , left , layoutmsg , swapcol l" 
+        "$mainMod CTRL, right, swapwindow , r"
+        "$mainMod CTRL, left , swapwindow , l"
+        #"$mainMod CTRL , right , layoutmsg , swapcol r"
+        #"$mainMod CTRL , left , layoutmsg , swapcol l" 
         
         "$mainMod SHIFT , up , resizeactive, 0 -10  "
         "$mainMod SHIFT , down , resizeactive ,0 10 "
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+        "SHIFT, PRINT, exec, grimblast copysave area \"$HOME/Screenshot/$(date +'%Y-%m-%d_%H-%M-%S').png\""
+        "$mainMod SHIFT, PRINT, exec, grimblast copysave output \"$HOME/Screenshot/$(date +'%Y-%m-%d_%H-%M-%S').png\""
       ];
 
       bindm = [

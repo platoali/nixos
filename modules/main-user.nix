@@ -1,4 +1,4 @@
-{lib  , pkgs, config , inputs,   ... } :
+{lib ,pkgs,config,inputs,   ... } :
 let
   cfg = config.main-user ;
 in {
@@ -10,6 +10,7 @@ in {
     };
   } ;
   config  = lib.mkIf cfg.enable  {
+
     users.users.${cfg.userName } = {
       isNormalUser = true;
      # home = "/home/platoali";
@@ -22,8 +23,12 @@ in {
     programs.hyprland.withUWSM  = true;
    
     programs.ssh.startAgent = true;
+     
+    home-manager.users.${cfg.userName} = {pkgs,  ... }: {
+      _module.args.inputs = inputs;
+      nixpkgs.overlays = [
 
-    home-manager.users.${cfg.userName} = {pkgs, ... }: {
+      ];
       imports = [
         ./user-custom/bash-custom.nix
         ./user-custom/hyprland-custom.nix
@@ -35,7 +40,7 @@ in {
         ./user-custom/ssh-custom.nix
       ];
    
-    
+      
       services.gnome-keyring = {
         enable = true;
         components = [ "ssh" "secrets" "pkcs11" ];
@@ -139,7 +144,7 @@ in {
         wofi
         sshuttle
         git
-        mpc-cli
+        mpc
         wpaperd
         mpvpaper
         grim
@@ -198,6 +203,11 @@ in {
       #  gtk3
         mosh
         hyprlandPlugins.hyprscrolling
+        nix-output-monitor
+        grimblast
+        marksman
+        nixd
+        bash-language-server
       ];
     };
   };
